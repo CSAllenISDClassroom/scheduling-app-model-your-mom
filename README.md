@@ -35,3 +35,26 @@
 9. Grayson  
 10. Elvin  
 11. Logan  
+
+
+### Role Descriptions
+
+* Leads
+  * Product Manager:
+  
+  * Project Manager:
+
+  * Development Manager:
+  
+  * QA Manager:
+  
+  * Release Manager:
+  
+  * DB Administrator:
+
+* Engineers
+  * QA Engineer:
+  
+  * Development Engineer (Back End):
+
+
