@@ -1,15 +1,13 @@
-# Scheduling-app-model-your-mom
+# Scheduling App Model - Your Mom
 
- Discord Link - https://discord.gg/DNZ23axv  
- Document Plans - https://docs.google.com/document/d/1yy-jXhWEQltrd7Kuj56ZxZZRnPHlCr0FrwX20fgUrTA/edit?usp=sharing  
+### Important Links
+ - Discord Link - https://discord.gg/DNZ23axv  
+ - Document Plans - https://docs.google.com/document/d/1yy-jXhWEQltrd7Kuj56ZxZZRnPHlCr0FrwX20fgUrTA/edit?usp=sharing  
  
-### Required Info please read team   
+### Required Documentation  
  - https://www.atlassian.com/git/tutorials/what-is-version-control
 
 - - -
-
-
-
 ### Team Roles
 | **Manager** | **Role** |
 | ----------- | ----------- |
@@ -34,7 +32,7 @@
   
   * **Project Manager**: Given the MVP, the project manager should plan more specific deadlines that detail what features, versions, or tasks should be done when. They should utilize project management tools such as GANTT charts or other tools or software to keep track of these deadlines and coordinate the compleition of tasks on time.
 
-  * (Daniel) **Development Manager**: This manager is responsible for coordinating the back-end developmental process according to the needs of the project manager. They assign developmental engineers specific tasks and should make sure to meet developmental deadlines and milestones on time.
+  * **Development Manager**: This manager is responsible for coordinating the back-end developmental process according to the needs of the project manager. They assign developmental engineers specific tasks and should make sure to meet developmental deadlines and milestones on time.
   
   * **QA Manager**: This manager is response for coordinating the QA engineers to complete certain tests or tool creations by the deadlines created in accordance with development and project deadlines. 
   
@@ -46,5 +44,3 @@
   * **QA Engineer**: This engineer is responsible for implementing a technology that has the ability to verify the quality of the software according to the MVP. Directed by the QA manager, this engineer should expect to complete the tests by the specified deadlines.
   
   * **Backend Development Engineer**: This engineer is responsible for implementing the APIs, data structures, and architecture of the code, figured out by the team as a whole. They will work directly with the development manager to complete tasks by the specified deadlines.
-
-
