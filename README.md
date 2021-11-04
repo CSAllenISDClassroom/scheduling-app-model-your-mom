@@ -15,12 +15,12 @@
 | Noah | Product Manager |
 | Miguel | Release Manager |
 | Daniel | Development Manager |
-| Vyom | QA Manager |
-| Kush | QA Engineer |
+| Kush | QA Manager |
+| Elvin | QA Engineer |
+| Vyom | QA Engineer |
 | Rohan | Backend Developer |
 | Kian | Backend Developer |
 | Grayson | Backend Developer |
-| Elvin | Backend Developer |
 | Logan | Backend Developer |
 
 - - -
@@ -34,7 +34,7 @@
 
   * **Development Manager**: This manager is responsible for coordinating the back-end developmental process according to the needs of the project manager. They assign developmental engineers specific tasks and should make sure to meet developmental deadlines and milestones on time.
   
-  * **QA Manager**: This manager is response for coordinating the QA engineers to complete certain tests or tool creations by the deadlines created in accordance with development and project deadlines. 
+  * **QA Manager**: The QA Manager is responsible for directing the QA Engineers and establishing quality assurance procedures to identify bugs in the program. They should also manage an organized checklist with potential problems/bugs as well as how they were fixed.
   
   * **Release Manager**: This manager is expected to collaborate with all members of the team, managing risks and resolving issues that affect the quality and scheduling of the product development process. They should continuosly monitor progress and create a release calendar that details the different versions of release and the final release along with the dates of each.
   
