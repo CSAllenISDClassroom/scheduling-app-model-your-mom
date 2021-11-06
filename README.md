@@ -5,7 +5,7 @@
  - Document Plans - https://docs.google.com/document/d/1yy-jXhWEQltrd7Kuj56ZxZZRnPHlCr0FrwX20fgUrTA/edit?usp=sharing  
  
 ### Required Documentation  
- - https://www.atlassian.com/git/tutorials/what-is-version-control
+ - GIT Version Control - https://www.atlassian.com/git/tutorials/what-is-version-control
 
 - - -
 ### Team Roles
@@ -16,7 +16,7 @@
 | Miguel | Release Manager |
 | Daniel | Development Manager |
 | Kush | QA Manager |
-| Elvin | QA Engineer |
+| Elvin | Database Administrator |
 | Vyom | QA Engineer |
 | Rohan | Backend Developer |
 | Kian | Backend Developer |
