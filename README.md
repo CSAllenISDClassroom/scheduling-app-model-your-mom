@@ -2,7 +2,7 @@
 
 ### Important Links
  - Discord Link - https://discord.gg/DNZ23axv  
- - Document Plans - https://docs.google.com/document/d/1yy-jXhWEQltrd7Kuj56ZxZZRnPHlCr0FrwX20fgUrTA/edit?usp=sharing  
+ - Document Plans - https://docs.google.com/document/d/1yy-jXhWEQltrd7Kuj56ZxZZRnPHlCr0FrwX20fgUrTA/edit?usp=sharing 
  
 ### Required Documentation  
  - GIT Version Control - https://www.atlassian.com/git/tutorials/what-is-version-control
