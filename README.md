@@ -15,9 +15,9 @@
 | Noah | Product Manager |
 | Miguel | Release Manager |
 | Daniel | Development Manager |
-| Kush | QA Manager |
+| Kush | QA Engineer |
 | Elvin | Database Administrator |
-| Vyom | QA Engineer |
+| Vyom | QA Manager |
 | Rohan | Backend Developer |
 | Kian | Backend Developer |
 | Grayson | Backend Developer |
