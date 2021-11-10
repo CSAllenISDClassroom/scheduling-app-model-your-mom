@@ -8,7 +8,7 @@
 ### Functionality
 
 
-### Development Design
+### Design
 
 
 ### QA 
@@ -21,7 +21,7 @@
 ### Functionality
 
 
-### Development Design
+### Design
 
 
 ### QA 
@@ -34,7 +34,7 @@
 ### Functionality
 
 
-### Development Design
+### Design
 
 
 ### QA 
@@ -47,7 +47,7 @@
 ### Functionality
 
 
-### Development Design
+### Design
 
 
 ### QA 
@@ -60,7 +60,7 @@
 ### Functionality
 
 
-### Development Design
+### Design
 
 
 ### QA 
@@ -73,7 +73,7 @@
 ### Functionality
 
 
-### Development Design
+### Design
 
 
 ### QA 
@@ -86,7 +86,7 @@
 ### Functionality
 
 
-### Development Design
+### Design
 
 
 ### QA 
@@ -99,7 +99,7 @@
 ### Functionality
 
 
-### Development Design
+### Design
 
 
 ### QA 
@@ -112,7 +112,7 @@
 ### Functionality
 
 
-### Development Design
+### Design
 
 
 ### QA 
@@ -125,7 +125,7 @@
 ### Functionality
 
 
-### Development Design
+### Design
 
 
 ### QA 
