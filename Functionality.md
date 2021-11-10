@@ -83,18 +83,6 @@ For this functionality the HTTP request would be GET with no peramiters a body c
 ### QA 
 
 
-## Pop-Up Error Messages Based on Conflicts
-
-
-### Functionality
-
-
-### Design
-
-
-### QA 
-
-
 
 ## Create a Key/ID Within the Database for Each Schedule Created
 
