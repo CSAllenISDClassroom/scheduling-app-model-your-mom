@@ -78,23 +78,9 @@ When a class is added in the scheduler app, conflict warnings of any issues, if 
 
 
 ### Design
-
-
-### QA 
-
-
-
-## Return Conflict Warnings Based on Class Placement
-
-
-### Functionality
-
-
-### Design 
 For this functionality the HTTP request would be GET with no peramiters a body consisting of the cources in JSON format. The response would give a body of the conflicts in JSON format and status code 200 OK. 
 
 ### QA 
-
 
 
 ## Pop-Up Error Messages Based on Conflicts
@@ -102,7 +88,6 @@ For this functionality the HTTP request would be GET with no peramiters a body c
 
 ### Functionality
 
->>>>>>> dc5df2175b571682e28629ae9abfb9358129056c
 
 ### Design
 
