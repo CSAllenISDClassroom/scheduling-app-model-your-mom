@@ -48,8 +48,8 @@ For this feature, the HTTP method is GET which would use filter to sort the curr
 
 
 ### Design
-
-
+Use a PUT HTTPS method to take class data from the master list of classes and add them to your own personnel list of classes this is used to 
+make a schedule based on the classes in your personnel list.
 ### QA 
 
 
