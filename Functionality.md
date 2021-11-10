@@ -1,80 +1,67 @@
-<<<<<<< Updated upstream
 # List of Features 
 
-- - -
-## Feature 1
+
+
+## Feature
+---
 
 ### Functionality
-### Development
-### Quality Assurnace
-
-- - -
-## Feature 2
 
 
-- - -
-## Feature 3
-=======
-# Feature
----
-
-## Functionality
+### Development Design
 
 
-## Development Design
-
-
-## QA 
+### QA 
 
 
 ---
-# Feature
+## Feature
 
 
-## Functionality
+### Functionality
 
 
-## Development Design
+### Development Design
 
 
-## QA 
-
-
----
-# Feature
-
-
-## Functionality
-
-
-## Development Design
-
-
-## QA 
+### QA 
 
 
 ---
-# Feature
+## Feature
 
 
-## Functionality
+### Functionality
 
 
-## Development Design
+### Development Design
 
 
-## QA 
+### QA 
 
 
 ---
-# Feature
+## Feature
 
 
-## Functionality
+### Functionality
 
 
-## Development Design
+### Development Design
 
 
-## QA 
->>>>>>> Stashed changes
+### QA 
+
+
+---
+## Feature
+
+
+### Functionality
+
+
+### Development Design
+
+
+### QA 
+
