@@ -106,7 +106,7 @@
 
 
 
-## Create a Key/ID Within the Database for Each Scheudle Created
+## Create a Key/ID Within the Database for Each Schedule Created
 
 
 ### Functionality
