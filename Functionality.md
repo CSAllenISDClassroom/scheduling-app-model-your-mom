@@ -2,20 +2,7 @@
 
 
 
-## Feature
----
-
-### Functionality
-
-
-### Development Design
-
-
-### QA 
-
-
----
-## Feature
+## Retrieve a Course List
 
 
 ### Functionality
@@ -27,8 +14,8 @@
 ### QA 
 
 
----
-## Feature
+
+## Search Course List by Keyword
 
 
 ### Functionality
@@ -40,8 +27,8 @@
 ### QA 
 
 
----
-## Feature
+
+## Filter Courses Based on Attributes
 
 
 ### Functionality
@@ -53,8 +40,8 @@
 ### QA 
 
 
----
-## Feature
+
+## Add Courses Into a Personal Schedule Pool
 
 
 ### Functionality
@@ -65,3 +52,80 @@
 
 ### QA 
 
+
+
+## Put Courses in a Schedule, and Into a Schedule Position
+
+
+### Functionality
+
+
+### Development Design
+
+
+### QA 
+
+
+
+## Return Conflict Warnings Based on Class Placement
+
+
+### Functionality
+
+
+### Development Design
+
+
+### QA 
+
+
+
+## Return Conflict Warnings Based on Class Placement
+
+
+### Functionality
+
+
+### Development Design
+
+
+### QA 
+
+
+
+## Pop-Up Error Messages Based on Conflicts
+
+
+### Functionality
+
+
+### Development Design
+
+
+### QA 
+
+
+
+## Create a Key/ID Within the Database for Each Scheudle Created
+
+
+### Functionality
+
+
+### Development Design
+
+
+### QA 
+
+
+
+## Counselor can Add Classes
+
+
+### Functionality
+
+
+### Development Design
+
+
+### QA 
