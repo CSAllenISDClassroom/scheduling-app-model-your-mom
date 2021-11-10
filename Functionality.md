@@ -49,8 +49,8 @@ For this feature, the HTTP method is GET which would use filter to sort the curr
 
 
 ### Design
-
-
+Use a PUT HTTPS method to take class data from the master list of classes and add them to your own personnel list of classes this is used to 
+make a schedule based on the classes in your personnel list.
 ### QA 
 
 
@@ -62,7 +62,8 @@ For this feature, the HTTP method is GET which would use filter to sort the curr
 
 
 ### Design
-
+  Use the PUT HTTP method to change or add a specific course(if it's allowed by checking whether the class is offered during that period into 
+specific box which is chosen by a second parameter that is a number out of which allows you to select the speicific class period you want.
 
 ### QA 
 
@@ -72,6 +73,8 @@ For this feature, the HTTP method is GET which would use filter to sort the curr
 
 
 ### Functionality
+When a class is added in the scheduler app, conflict warnings of any issues, if any, should be displayed. Clearly noticeable pop-up errors messages should be visible to the user. These messages should contain concise but crucial information to inform the user of any issues. Said issues include if a class is not available in a particular period, if a class is double blocked (back to back periods) and overlaps with another class, if consecutive classes have STEAM center and Allen High School campus time constraints, if the user selects privilege periods that conflict with already selected courses, and if dual credit courses become incompatible as they conform to a Monday/Wednesday/Friday schedule rather than an A/B block schedule. The warning should contain the the name of the class or classes that have a conflict, the period of the class(es), and the name of any other classes that have a corresponding conflict.
+
 
 
 ### Design
@@ -87,8 +90,8 @@ For this feature, the HTTP method is GET which would use filter to sort the curr
 ### Functionality
 
 
-### Design
-
+### Design 
+For this functionality the HTTP request would be GET with no peramiters a body consisting of the cources in JSON format. The response would give a body of the conflicts in JSON format and status code 200 OK. 
 
 ### QA 
 
@@ -99,6 +102,7 @@ For this feature, the HTTP method is GET which would use filter to sort the curr
 
 ### Functionality
 
+>>>>>>> dc5df2175b571682e28629ae9abfb9358129056c
 
 ### Design
 
@@ -124,7 +128,7 @@ For this feature, the HTTP method is GET which would use filter to sort the curr
 
 
 ### Functionality
-
+For this feature,the HTTP method is POST where a counselor would invoke this API to add a new course to the master-course list. The parameters required would be the name of class and every single attribute all classes have which include but are not limited to GPA, teacher names, semester credits which campus the class is avaliable on etc. The status code would be "201 Created" if the parameters required are met. The response would be the name of the successfully created class as well as all parameters and attributes of the course.  
 
 ### Design
 
