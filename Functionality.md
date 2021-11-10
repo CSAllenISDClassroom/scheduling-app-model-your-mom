@@ -61,7 +61,8 @@ For this feature, the HTTP method is GET which would use filter to sort the curr
 
 
 ### Design
-
+  Use the PUT HTTP method to change or add a specific course(if it's allowed by checking whether the class is offered during that period into 
+specific box which is chosen by a second parameter that is a number out of which allows you to select the speicific class period you want.
 
 ### QA 
 
