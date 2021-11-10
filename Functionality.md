@@ -86,8 +86,8 @@ A list of all courses should be available for all users to see. The list of all 
 ### Functionality
 
 
-### Design
-
+### Design 
+For this functionality the HTTP request would be GET with no peramiters a body consisting of the cources in JSON format. The response would give a body of the conflicts in JSON format and status code 200 OK. 
 
 ### QA 
 
