@@ -107,7 +107,7 @@ A list of all courses should be available for all users to see. The list of all 
 
 
 ## Create a Key/ID Within the Database for Each Schedule Created
-
+When a user creates schedule using the app, an ID or Key should be generator for that specific schedule and stored within the database. These IDs will contribute to the product, as the ID will allow consumers to access their schedule on any computer, as long as they have the code.
 
 ### Functionality
 
