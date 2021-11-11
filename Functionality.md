@@ -49,8 +49,10 @@ For this feature, the HTTP method is GET which would use filter to sort the curr
 
 
 ### Design
-Use a PUT HTTPS method to take class data from the master list of classes and add them to your own personnel list of classes this is used to 
-make a schedule based on the classes in your personnel list.
+Use a PUT HTTPS method to take class data from the master list of classes and add them to your own personnel list of classes this is used to make a schedule based on the classes in your personnel list. 
+
+
+
 ### QA 
 
 
@@ -78,17 +80,16 @@ When a class is added in the scheduler app, conflict warnings of any issues, if 
 
 
 ### Design
-For this functionality the HTTP request would be GET with no peramiters a body consisting of the cources in JSON format. The response would give a body of the conflicts in JSON format and status code 200 OK. 
+For this functionality the HTTP request would be GET with no peramiters a body consisting of the cources in JSON format. The response would give a body of the conflicts in JSON format and status code 200 OK.
 
 ### QA 
 
 
 
 ## Create a Key/ID Within the Database for Each Schedule Created
-When a user creates schedule using the app, an ID or Key should be generator for that specific schedule and stored within the database. These IDs will contribute to the product, as the ID will allow consumers to access their schedule on any computer, as long as they have the code.
 
 ### Functionality
-
+When a user creates schedule using the app, an ID or Key should be generator for that specific schedule and stored within the database. These IDs will contribute to the product, as the ID will allow consumers to access their schedule on any computer, as long as they have the code. The ID or key will be a string of 12 randomly generated and unique characters that will represent a schedule. The id should be able to refer to a schedule, including the positions of each course, the personal course pool, and any other errors that still exist within that schedule. Basically, the ID should represent exactly what the user has completed. IDs will be generated at the end of the schedule creation. A bare minimum requirement of this functionality will include an 12 digit ID generated which includes a pool of all selected courses. An ideal functionality of this feature can include the positions of all the courses, a pool of all the courses, and a way for these ID to be shared. A striking issue of an ID might be that if multiple users work on one ID, the system will have to recognize this, and fork the ID to create an identical schedule so multiple users can use the same ID.
 
 ### Design
 
@@ -101,9 +102,10 @@ When a user creates schedule using the app, an ID or Key should be generator for
 
 
 ### Functionality
-For this feature,the HTTP method is POST where a counselor would invoke this API to add a new course to the master-course list. The parameters required would be the name of class and every single attribute all classes have which include but are not limited to GPA, teacher names, semester credits which campus the class is avaliable on etc. The status code would be "201 Created" if the parameters required are met. The response would be the name of the successfully created class as well as all parameters and attributes of the course.  
+Instead of obtaining a list of all classes, and manually typing every single course, and all of its properties into the database, by creating an API, and interface, which can accept information through a series of multiple choice true and false answers, courses can be added from counselors who hold more knowledge about courses. By creating a way for counselors to add courses, it will allow for a constantly updatable database of all courses. A bare minimum requirement will be developers using a list of all courses and inputting all of the courses within the database. An ideal funcionality will include an application which allows counselors to communicate with the course database, and input their own courses. Even more so, there could be a program in place which can delete errorrously added classes, and duplicate classes that counselors might add.
+
 
 ### Design
-
+For this feature,the HTTP method is POST where a counselor would invoke this API to add a new course to the master-course list. The parameters required would be the name of class and every single attribute all classes have which include but are not limited to GPA, teacher names, semester credits which campus the class is avaliable on etc. The status code would be "201 Created" if the parameters required are met. The response would be the name of the successfully created class as well as all parameters and attributes of the course.
 
 ### QA 
