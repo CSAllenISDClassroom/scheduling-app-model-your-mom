@@ -185,21 +185,17 @@ The expected output is a page where users can create an account or log in to an 
 
 ### QA
 
-
-## Countdown to Scheduling Date
-
-### Functionality
-
-### Design
-
-### QA
-
-
 ## Class Availability & Tracking Class Spots
+Since users need an account to use the scheduling app, any schedules they make will create information stored within our databases. Through this, it can be deduced the number of students who are looking to enroll in a course at a certain period. On the scheduling app, the number of students that a class is limited to will be displayed, and a separate column denoting the number of students competing for that course is also shown. 
 
 ### Functionality
 
 ### Design
+* The HTTP method for this feature is GET 
+* The required parameter for this feature would be selecting a specific course to check avalability for that course and to view the amount of spots
+* There is no required body for invocation of this feature
+* The status code would be "200 OK" if compiled properly
+* The response would contain avalability for a class and the class spots avaliable in that course
 
 ### QA
 
@@ -235,6 +231,7 @@ The expected output is a page where users can create an account or log in to an 
 ## Auto-Fill Option for Incompleted Schedules
 
 ### Functionality
+An easily accessible button that allows students to place random classes into their missing schedule spots. In addition, the required core classes must be placed into the schedule prior to the autofill adding other elective classes. The button should allow the user to continousley keep autofilling and essentially "rolling", but a cooldown on the button would be necessary to limit the usage and overworking the server. At the very least, the function would make sure to fill in a student's schedule to have no missing gaps.
 
 ### Design
 
@@ -244,6 +241,7 @@ The expected output is a page where users can create an account or log in to an 
 ## Generate a Randomized Schedule Based on Selected Course Pool
 
 ### Functionality
+Similarly to the Auto-fill, a student would enter a new "mode" that would allow them to select up to 8 courses, being able to add them and remove them. After the courses have been confirmed by the student, the function will create a random schedule with all of the selected courses. In addition, the randomizer would ensure to prevent any conflicts, such as privledge periods during lunch or no available classes. The randomizer, like the autof-fill, should prioritize filling in core classes over electives and off periods.
 
 ### Design
 
