@@ -180,7 +180,7 @@ The expected output is a page where users can create an account or log in to an 
 ### Design
 
 ### QA
-
+The expected output is the ability to export a completed schedule as a pdf or share it. Exporting should appear as an option for the user. Should display warning message only when attempting to export a schedule with conflicts still present. Display an error when attempting to share schedule with an invalid email address. 
 
 ## Countdown to Scheduling Date
 
