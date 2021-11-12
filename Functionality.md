@@ -145,14 +145,14 @@ If you want to select a certain student’s schedule there should be keys to cat
 
 
 ### Functionality
+Instead of obtaining a list of all classes, and manually typing every single course, and all of its properties into the database, by creating an API, and interface, which can accept information through a series of multiple choice true and false answers, courses can be added from counselors who hold more knowledge about courses. By creating a way for counselors to add courses, it will allow for a constantly updatable database of all courses. A bare minimum requirement will be developers using a list of all courses and inputting all of the courses within the database. An ideal funcionality will include an application which allows counselors to communicate with the course database, and input their own courses. Even more so, there could be a program in place which can delete errorrously added classes, and duplicate classes that counselors might add.
+
+### Design
 * The HTTP method for this feature is POST where a counselor would invoke this API to add a new course to the master-list of courses
 * The parameters required would be the name of the class and every single attribute all classes have which include but are not limited to GPA, teacher names, semester credits, campus avalability, etc.
 * There is no required body for invocation of this feature
 * The status code would be "201 Created" if the parameters required are met
 * There would be no response for this feature
-
-### Design
-For this feature,the HTTP method is POST where a counselor would invoke this API to add a new course to the master-course list. The parameters required would be the name of class and every single attribute all classes have which include but are not limited to GPA, teacher names, semester credits which campus the class is avaliable on etc. The status code would be "201 Created" if the parameters required are met. The response would be the name of the successfully created class as well as all parameters and attributes of the course.
 
 ### QA 
 Front end should be optimized to make scheduling for counselors easier.
