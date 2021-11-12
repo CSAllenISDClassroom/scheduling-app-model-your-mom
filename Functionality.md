@@ -60,10 +60,13 @@ If user inputs invalid attributes, return “no courses match search, please try
 Use a PUT HTTPS method to take class data from the master list of classes and add them to your own personnel list of classes this is used to make a schedule based on the classes in your personnel list. 
 
 
-
 ### QA 
 Expected Output: Program has a add courses button respective to the personal schedule pool
+<<<<<<< HEAD
 If the user adds invalid courses, return “Course does not exist” 
+=======
+If the user adds invalid courses, return “Course does not exist”
+>>>>>>> c1561f7803600770566a991c353acf9e9c439eae
 
 
 
@@ -85,9 +88,7 @@ specific box which is chosen by a second parameter that is a number out of which
 
 
 ### Functionality
-When a class is added in the scheduler app, conflict warnings of any issues, if any, should be displayed. Clearly noticeable pop-up errors messages should be visible to the user. These messages should contain concise but crucial information to inform the user of any issues. Said issues include if a class is not available in a particular period, if a class is double blocked (back to back periods) and overlaps with another class, if consecutive classes have STEAM center and Allen High School campus time constraints, if the user selects privilege periods that conflict with already selected courses, and if dual credit courses become incompatible as they conform to a Monday/Wednesday/Friday schedule rather than an A/B block schedule. The warning should contain the the name of the class or classes that have a conflict, the period of the class(es), and the name of any other classes that have a corresponding conflict.
-
-
+When a class is added in the scheduler app, conflict warnings of any issues, if any, should be displayed. Clearly noticeable pop-up errors messages should be visible to the user. These messages should contain concise but crucial information to inform the user of any issues. Said issues include if a class is not available in a particular period, if a class is double blocked (back to back periods) and overlaps with another class, if consecutive classes have STEAM center and Allen High School campus travel time constraints, if too many or not enough classes are selected, if the user selects privilege periods that conflict with already selected courses, and if dual credit courses become incompatible as they conform to a Monday/Wednesday/Friday schedule rather than an A/B block schedule. The warning should contain the the name of the class or classes that have a conflict, the period of the class(es), and the name of any other classes that have a corresponding conflict. Additional features that can improve the quality of this feature include possible schedule suggestions based on a user's selected courses, a list of possible alternative courses for a course that has a conflict within the schedule, and suggestions for courses of similar GPA level or subject type for conflicting courses.
 
 ### Design
 For this functionality the HTTP request would be GET with no peramiters a body consisting of the cources in JSON format. The response would give a body of the conflicts in JSON format and status code 200 OK.
