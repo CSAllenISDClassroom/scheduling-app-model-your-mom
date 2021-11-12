@@ -185,6 +185,7 @@ Same QA regarding “Conflict Warnings Based on Class Placement” on the counse
 ## Countdown to Scheduling Date
 
 ### Functionality
+On an easily accessible page in the scheduling app, a timer in the format of day/hour/minute/second should be visibly displayed that counts down to the exact time different scheduling times open. There are various scheduling times, separated by grade level and priority level, and a dropdown menu can be used to switch the timer to a different scheduling time. The text of the timer should be large and very apparent on the user's screen. When the timer reaches zero, a flashing red color should appear on the screen, and a ringtone that can be optionally turned on and off may play a sound to alert the user. If the time for a particular scheduling timeframe has started or closed, then the page for that section should produce a notification that exhibits the information. Additional ideal features include notifying the user through a user given email, text message, or through a web browser's notification options.
 
 ### Design
 
@@ -192,6 +193,7 @@ Same QA regarding “Conflict Warnings Based on Class Placement” on the counse
 
 
 ## Class Availability & Tracking Class Spots
+Since users need an account to use the scheduling app, any schedules they make will create information stored within our databases. Through this, it can be deduced the number of students who are looking to enroll in a course at a certain period. On the scheduling app, the number of students that a class is limited to will be displayed, and a separate column denoting the number of students competing for that course is also shown. 
 
 ### Functionality
 
