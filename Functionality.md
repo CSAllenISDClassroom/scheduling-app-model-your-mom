@@ -1,8 +1,7 @@
 # List of Features 
 
 
-
-## Retrieve a Course List
+## Retrieve All Courses 
 
 
 ### Functionality 
@@ -120,7 +119,7 @@ Example: If user tries to schedule a high school class first period and steam cl
 
 
 
-## Create a Key/ID Within the Database for Each Schedule Created
+## Create a Sign Up for New Users
 
 ### Functionality
 When a user creates schedule using the app, an ID or Key should be generated for that specific schedule and stored within the database. These IDs will contribute to the product, as the ID will allow consumers to access their schedule on any computer, as long as they have the code. The ID or key will be a string of 12 randomly generated and unique characters that will represent a schedule. The id should be able to refer to a schedule, including the positions of each course, the personal course pool, and any other errors that still exist within that schedule. Basically, the ID should represent exactly what the user has completed. IDs will be generated at the end of the schedule creation. A bare minimum requirement of this functionality will include an 12 digit ID generated which includes a pool of all selected courses. An ideal functionality of this feature can include the positions of all the courses, a pool of all the courses, and a way for these ID to be shared. A striking issue of an ID might be that if multiple users work on one ID, the system will have to recognize this, and fork the ID to create an identical schedule so multiple users can use the same ID.
@@ -129,10 +128,15 @@ When a user creates schedule using the app, an ID or Key should be generated for
 
 
 ### QA 
+- Keys should be easily replicable. 
+The same key should always generate the same schedule.
+-Keys should not appear when you are inside a schedule
+Expected Output: Display keys to manage the schedules. If no schedules exist, return “no existing schedule”. The message should clearly describe this error. 
+If you want to select a certain student’s schedule there should be keys to categorize this type of student.
 
 
 
-## Counselor can Add Classes
+## Counselor can Add Courses
 
 
 ### Functionality
@@ -149,3 +153,96 @@ For this feature,the HTTP method is POST where a counselor would invoke this API
 Front end should be optimized to make scheduling for counselors easier.
 Counselors and students should be notified of a successful course selection by the counselor.
 Same QA regarding “Conflict Warnings Based on Class Placement” on the counselors end.
+
+
+## Login Using Saved Accounts
+
+### Functionality
+
+### Design
+
+### QA
+
+
+## Password Retrevial System
+
+### Functionality
+
+### Design
+
+### QA
+
+
+## Ability to Export and Share Schedules
+
+### Functionality
+
+### Design
+
+### QA
+
+
+## Countdown to Scheduling Date
+
+### Functionality
+
+### Design
+
+### QA
+
+
+## Class Availability & Tracking Class Spots
+
+### Functionality
+
+### Design
+
+### QA
+
+
+## Generate a Class Priority/Popularity List
+
+### Functionality
+
+### Design
+
+### QA
+
+
+## Update(Change/Remove) Existing Course From Pool
+
+### Functionality
+
+### Design
+
+### QA
+
+
+## Read a Selected Course Pool
+
+### Functionality
+
+### Design
+
+### QA
+
+
+
+## Auto-Fill Option for Incompleted Schedules
+
+### Functionality
+
+### Design
+
+### QA
+
+
+## Generate a Randomized Schedule Based on Selected Course Pool
+
+### Functionality
+
+### Design
+
+### QA
+
+
