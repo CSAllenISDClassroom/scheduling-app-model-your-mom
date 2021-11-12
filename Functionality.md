@@ -13,6 +13,9 @@ A list of all courses should be available for all users to see. The list of all 
 For this feature, the HTTP method is GET and there are no parameters or body necessary for invocation. The response would return a body that contains the JSON-formatted data for all of the courses and a HTTP 201 successfully created status code on completion. Some errors could occur if the request is unable to reach the server in the specified time.
 
 ### QA 
+Expected Output: All offered courses are returned
+All given attributes (class subject, and difficulty level) are returned with courses
+Ex. Course = Algebra II, Attributes = Pre-AP and Math
 
 
 
