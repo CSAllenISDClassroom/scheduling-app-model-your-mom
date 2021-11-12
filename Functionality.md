@@ -182,20 +182,16 @@ Same QA regarding “Conflict Warnings Based on Class Placement” on the counse
 ### QA
 
 
-## Countdown to Scheduling Date
-
-### Functionality
-
-### Design
-
-### QA
-
-
 ## Class Availability & Tracking Class Spots
 
 ### Functionality
 
 ### Design
+* The HTTP method for this feature is GET 
+* The required parameter for this feature would be selecting a specific course to check avalability for that course and to view the amount of spots
+* There is no required body for invocation of this feature
+* The status code would be "200 OK" if compiled properly
+* The response would contain avalability for a class and the class spots avaliable in that course
 
 ### QA
 
