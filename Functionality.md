@@ -189,7 +189,7 @@ Design a way to onvert the file to a pdf or a custom file format this could allo
 ### QA
 
 ## Class Availability & Tracking Class Spots
-Since users need an account to use the scheduling app, any schedules they make will create information stored within our databases. Through this, it can be deduced the number of students who are looking to enroll in a course at a certain period. On the scheduling app, the number of students that a class is limited to will be displayed, and a separate column denoting the number of students competing for that course is also shown. 
+Since users need an account to use the scheduling app, any schedules they make will create information stored within our databases. Through this, it can be deduced the number of students who are looking to enroll in a course at a certain period. On the scheduling app, the number of students that a class is limited to will be displayed, and a separate column denoting the number of students currently competing for that course is also shown  Ideally, some useful features include having information that displays to the user in a clear, color-coded format if a class is near empty, full, or excessively desired. 
 
 ### Functionality
 
@@ -206,6 +206,7 @@ Since users need an account to use the scheduling app, any schedules they make w
 ## Generate a Class Priority/Popularity List
 
 ### Functionality
+Through tracking course spots and availability, a schedule list with information regarding the popularity of each class is displayed to the user. Along with generating data about the number of users currently desiring a course, this feature also permits the list to be sorted by the popularity of a course. The attributes of each class should also be displayed on the list, such as the course's GPA, teacher, room number, and subject category. Some ideal features include a list of possible courses to replace ones a user currently has, as well as comparison features that allow the user to contrast their attributes.
 
 ### Design
 
