@@ -123,3 +123,6 @@ Instead of obtaining a list of all classes, and manually typing every single cou
 For this feature,the HTTP method is POST where a counselor would invoke this API to add a new course to the master-course list. The parameters required would be the name of class and every single attribute all classes have which include but are not limited to GPA, teacher names, semester credits which campus the class is avaliable on etc. The status code would be "201 Created" if the parameters required are met. The response would be the name of the successfully created class as well as all parameters and attributes of the course.
 
 ### QA 
+Front end should be optimized to make scheduling for counselors easier.
+Counselors and students should be notified of a successful course selection by the counselor.
+Same QA regarding “Conflict Warnings Based on Class Placement” on the counselors end.
