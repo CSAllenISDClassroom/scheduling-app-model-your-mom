@@ -44,6 +44,9 @@ Each course would be assigned specific attributes, some being the level of the c
 For this feature, the HTTP method is GET which would use filter to sort the current list of classes by set of avaliable attributes. There are multiple possible parameters as the attributes of different classes varies, which could potentially be GPA level, teacher names, semester credits, which campus the class is avaliable on, etc. The status code of the request will return "200 OK" if all parameters are met. The response would contain a JSON list of classes that would sort the list of classes currently viewed by the client by a desired attributed through their parameter selection.
 
 ### QA 
+Expected Output: Program returns list of courses that match attributes
+If user inputs invalid attributes, return “no courses match search, please try again”
+	Ex. Course = Algebra II, Attributes = Pre-AP or on-level
 
 
 
