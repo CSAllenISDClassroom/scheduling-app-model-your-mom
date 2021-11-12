@@ -29,6 +29,8 @@ A search bar both at the top and the bottom of the page. The feature needs to at
 For this feature, the HTTP method is GET which would use filter to sort the desired class by keyword. The parameter, being the keyword would sort through the list of classes based on the keyword which may match class names, class attributes, or types of classes. There would be no specific body in this request. The status code of the request will return "200 OK" if all parameters are met, regardless if there are any avaliable classes. The response would contain a JSON list of classes that contain matching names, attributes, or types of classes. 
 
 ### QA 
+Expected Output: Program returns list of courses that match keywords
+If user inputs keywords that that don’t match any courses or property names, return “no courses match search, please try again”
 
 
 
@@ -42,6 +44,9 @@ Each course would be assigned specific attributes, some being the level of the c
 For this feature, the HTTP method is GET which would use filter to sort the current list of classes by set of avaliable attributes. There are multiple possible parameters as the attributes of different classes varies, which could potentially be GPA level, teacher names, semester credits, which campus the class is avaliable on, etc. The status code of the request will return "200 OK" if all parameters are met. The response would contain a JSON list of classes that would sort the list of classes currently viewed by the client by a desired attributed through their parameter selection.
 
 ### QA 
+Expected Output: Program returns list of courses that match attributes
+If user inputs invalid attributes, return “no courses match search, please try again”
+	Ex. Course = Algebra II, Attributes = Pre-AP or on-level
 
 
 
@@ -57,8 +62,9 @@ All courses should be able to be selected and placed in a separate pool. If cour
 Use a PUT HTTPS method to take class data from the master list of classes and add them to your own personnel list of classes this is used to make a schedule based on the classes in your personnel list. 
 
 
-
 ### QA 
+Expected Output: Program has a add courses button respective to the personal schedule pool
+If the user adds invalid courses, return “Course does not exist”
 
 
 
@@ -81,9 +87,7 @@ specific box which is chosen by a second parameter that is a number out of which
 
 
 ### Functionality
-When a class is added in the scheduler app, conflict warnings of any issues, if any, should be displayed. Clearly noticeable pop-up errors messages should be visible to the user. These messages should contain concise but crucial information to inform the user of any issues. Said issues include if a class is not available in a particular period, if a class is double blocked (back to back periods) and overlaps with another class, if consecutive classes have STEAM center and Allen High School campus time constraints, if the user selects privilege periods that conflict with already selected courses, and if dual credit courses become incompatible as they conform to a Monday/Wednesday/Friday schedule rather than an A/B block schedule. The warning should contain the the name of the class or classes that have a conflict, the period of the class(es), and the name of any other classes that have a corresponding conflict.
-
-
+When a class is added in the scheduler app, conflict warnings of any issues, if any, should be displayed. Clearly noticeable pop-up errors messages should be visible to the user. These messages should contain concise but crucial information to inform the user of any issues. Said issues include if a class is not available in a particular period, if a class is double blocked (back to back periods) and overlaps with another class, if consecutive classes have STEAM center and Allen High School campus travel time constraints, if too many or not enough classes are selected, if the user selects privilege periods that conflict with already selected courses, and if dual credit courses become incompatible as they conform to a Monday/Wednesday/Friday schedule rather than an A/B block schedule. The warning should contain the the name of the class or classes that have a conflict, the period of the class(es), and the name of any other classes that have a corresponding conflict. Additional features that can improve the quality of this feature include possible schedule suggestions based on a user's selected courses, a list of possible alternative courses for a course that has a conflict within the schedule, and suggestions for courses of similar GPA level or subject type for conflicting courses.
 
 ### Design
 For this functionality the HTTP request would be GET with no peramiters a body consisting of the cources in JSON format. The response would give a body of the conflicts in JSON format and status code 200 OK.
