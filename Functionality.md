@@ -128,6 +128,11 @@ When a user creates schedule using the app, an ID or Key should be generated for
 
 
 ### QA 
+- Keys should be easily replicable. 
+The same key should always generate the same schedule.
+-Keys should not appear when you are inside a schedule
+Expected Output: Display keys to manage the schedules. If no schedules exist, return “no existing schedule”. The message should clearly describe this error. 
+If you want to select a certain student’s schedule there should be keys to categorize this type of student.
 
 
 
