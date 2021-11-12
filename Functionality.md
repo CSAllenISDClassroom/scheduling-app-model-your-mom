@@ -29,6 +29,8 @@ A search bar both at the top and the bottom of the page. The feature needs to at
 For this feature, the HTTP method is GET which would use filter to sort the desired class by keyword. The parameter, being the keyword would sort through the list of classes based on the keyword which may match class names, class attributes, or types of classes. There would be no specific body in this request. The status code of the request will return "200 OK" if all parameters are met, regardless if there are any avaliable classes. The response would contain a JSON list of classes that contain matching names, attributes, or types of classes. 
 
 ### QA 
+Expected Output: Program returns list of courses that match keywords
+If user inputs keywords that that don’t match any courses or property names, return “no courses match search, please try again”
 
 
 
