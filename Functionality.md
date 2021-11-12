@@ -125,7 +125,11 @@ Example: If user tries to schedule a high school class first period and steam cl
 When a user creates schedule using the app, an ID or Key should be generated for that specific schedule and stored within the database. These IDs will contribute to the product, as the ID will allow consumers to access their schedule on any computer, as long as they have the code. The ID or key will be a string of 12 randomly generated and unique characters that will represent a schedule. The id should be able to refer to a schedule, including the positions of each course, the personal course pool, and any other errors that still exist within that schedule. Basically, the ID should represent exactly what the user has completed. IDs will be generated at the end of the schedule creation. A bare minimum requirement of this functionality will include an 12 digit ID generated which includes a pool of all selected courses. An ideal functionality of this feature can include the positions of all the courses, a pool of all the courses, and a way for these ID to be shared. A striking issue of an ID might be that if multiple users work on one ID, the system will have to recognize this, and fork the ID to create an identical schedule so multiple users can use the same ID.
 
 ### Design
-
+* The HTTP method for this feature is a POST which will assign a key being the ID or email and a value of a password.
+* There is no required parameters for this feature.
+* The body for this would include the input of a new email and an input of a new password in order to create a key value pair of the two.
+* The status code would be "201 Created" when the pair is made.
+* The response would be a new functioning account that can be accesed by any computer and provide any saved schedules.
 
 ### QA 
 - Keys should be easily replicable. 
@@ -140,14 +144,14 @@ If you want to select a certain student’s schedule there should be keys to cat
 
 
 ### Functionality
+Instead of obtaining a list of all classes, and manually typing every single course, and all of its properties into the database, by creating an API, and interface, which can accept information through a series of multiple choice true and false answers, courses can be added from counselors who hold more knowledge about courses. By creating a way for counselors to add courses, it will allow for a constantly updatable database of all courses. A bare minimum requirement will be developers using a list of all courses and inputting all of the courses within the database. An ideal funcionality will include an application which allows counselors to communicate with the course database, and input their own courses. Even more so, there could be a program in place which can delete errorrously added classes, and duplicate classes that counselors might add.
+
+### Design
 * The HTTP method for this feature is POST where a counselor would invoke this API to add a new course to the master-list of courses
 * The parameters required would be the name of the class and every single attribute all classes have which include but are not limited to GPA, teacher names, semester credits, campus avalability, etc.
 * There is no required body for invocation of this feature
 * The status code would be "201 Created" if the parameters required are met
 * There would be no response for this feature
-
-### Design
-For this feature,the HTTP method is POST where a counselor would invoke this API to add a new course to the master-course list. The parameters required would be the name of class and every single attribute all classes have which include but are not limited to GPA, teacher names, semester credits which campus the class is avaliable on etc. The status code would be "201 Created" if the parameters required are met. The response would be the name of the successfully created class as well as all parameters and attributes of the course.
 
 ### QA 
 Front end should be optimized to make scheduling for counselors easier.
@@ -162,7 +166,7 @@ Same QA regarding “Conflict Warnings Based on Class Placement” on the counse
 ### Design
 
 ### QA
-
+The expected output is a page where users can create an account or log in to an existing account with credentials and view their progress and saved schedules. This page should only display when first visiting the website. 
 
 ## Password Retrevial System
 
@@ -181,21 +185,17 @@ Same QA regarding “Conflict Warnings Based on Class Placement” on the counse
 
 ### QA
 
-
-## Countdown to Scheduling Date
-
-### Functionality
-
-### Design
-
-### QA
-
-
 ## Class Availability & Tracking Class Spots
+Since users need an account to use the scheduling app, any schedules they make will create information stored within our databases. Through this, it can be deduced the number of students who are looking to enroll in a course at a certain period. On the scheduling app, the number of students that a class is limited to will be displayed, and a separate column denoting the number of students competing for that course is also shown. 
 
 ### Functionality
 
 ### Design
+* The HTTP method for this feature is GET 
+* The required parameter for this feature would be selecting a specific course to check avalability for that course and to view the amount of spots
+* There is no required body for invocation of this feature
+* The status code would be "200 OK" if compiled properly
+* The response would contain avalability for a class and the class spots avaliable in that course
 
 ### QA
 
@@ -231,6 +231,7 @@ Same QA regarding “Conflict Warnings Based on Class Placement” on the counse
 ## Auto-Fill Option for Incompleted Schedules
 
 ### Functionality
+An easily accessible button that allows students to place random classes into their missing schedule spots. In addition, the required core classes must be placed into the schedule prior to the autofill adding other elective classes. The button should allow the user to continousley keep autofilling and essentially "rolling", but a cooldown on the button would be necessary to limit the usage and overworking the server. At the very least, the function would make sure to fill in a student's schedule to have no missing gaps.
 
 ### Design
 
@@ -240,6 +241,7 @@ Same QA regarding “Conflict Warnings Based on Class Placement” on the counse
 ## Generate a Randomized Schedule Based on Selected Course Pool
 
 ### Functionality
+Similarly to the Auto-fill, a student would enter a new "mode" that would allow them to select up to 8 courses, being able to add them and remove them. After the courses have been confirmed by the student, the function will create a random schedule with all of the selected courses. In addition, the randomizer would ensure to prevent any conflicts, such as privledge periods during lunch or no available classes. The randomizer, like the autof-fill, should prioritize filling in core classes over electives and off periods.
 
 ### Design
 
