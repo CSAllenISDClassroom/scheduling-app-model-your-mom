@@ -54,6 +54,8 @@ If user inputs invalid attributes, return “no courses match search, please try
 
 
 ### Functionality
+All courses should be able to be selected and placed in a separate pool. If courses are double blocked, then when one course is selected, the other course will be automatically added to the course pool. Add parameters that demand that all courses should be added for both semesters,(the total # of courses in the pool should be even, otherwise send an error message).
+
 
 
 ### Design
@@ -70,6 +72,7 @@ If the user adds invalid courses, return “Course does not exist”
 
 
 ### Functionality
+When a course is selected, the possible periods it could be placed in should be displayed. Visual representation could be added. When a course is selected and is moving to be placed into the schedule, it should be impossible to add the course in a place that already has another course in that spot.
 
 
 ### Design
