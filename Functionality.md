@@ -162,7 +162,7 @@ Same QA regarding “Conflict Warnings Based on Class Placement” on the counse
 ### Design
 
 ### QA
-
+The expected output is a page where users can create an account or log in to an existing account with credentials and view their progress and saved schedules. This page should only display when first visiting the website. 
 
 ## Password Retrevial System
 
@@ -180,22 +180,18 @@ Same QA regarding “Conflict Warnings Based on Class Placement” on the counse
 ### Design
 
 ### QA
-
-
-## Countdown to Scheduling Date
-
-### Functionality
-
-### Design
-
-### QA
-
+The expected output is the ability to export a completed schedule as a pdf or share it. Exporting should appear as an option for the user. Should display warning message only when attempting to export a schedule with conflicts still present. Display an error when attempting to share schedule with an invalid email address. 
 
 ## Class Availability & Tracking Class Spots
 
 ### Functionality
 
 ### Design
+* The HTTP method for this feature is GET 
+* The required parameter for this feature would be selecting a specific course to check avalability for that course and to view the amount of spots
+* There is no required body for invocation of this feature
+* The status code would be "200 OK" if compiled properly
+* The response would contain avalability for a class and the class spots avaliable in that course
 
 ### QA
 
