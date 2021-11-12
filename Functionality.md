@@ -60,8 +60,9 @@ If user inputs invalid attributes, return “no courses match search, please try
 Use a PUT HTTPS method to take class data from the master list of classes and add them to your own personnel list of classes this is used to make a schedule based on the classes in your personnel list. 
 
 
-
 ### QA 
+Expected Output: Program has a add courses button respective to the personal schedule pool
+If the user adds invalid courses, return “Course does not exist”
 
 
 
