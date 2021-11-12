@@ -1,7 +1,7 @@
 # Scheduling App Model - Your Mom
 
 ### Important Links
- - Discord Link - https://discord.gg/DNZ23axv  
+ - Discord Link - https://discord.gg/7cyKTzgcQF
  - Document Plans - https://docs.google.com/document/d/1yy-jXhWEQltrd7Kuj56ZxZZRnPHlCr0FrwX20fgUrTA/edit?usp=sharing 
  
 ### Required Documentation  
