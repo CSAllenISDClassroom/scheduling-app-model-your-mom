@@ -1,4 +1,3 @@
-
 # List of Features 
 
 
@@ -17,6 +16,8 @@ A list of all courses should be available for all users to see. The list of all 
 * The response returns a body which contains the JSON-formatted data for a list of all courses
 
 ### QA 
+Expected Output: All offered courses are returned. Program should display a list of all classes that are offered by the school, including their given attributes. The given attributes returned with the course should include class subject and difficulty level (on-level, Pre-AP, AP, IB, DC). 
+Ex. Course = Algebra II, Attributes = Pre-AP Level and Math Course
 
 
 
@@ -24,7 +25,7 @@ A list of all courses should be available for all users to see. The list of all 
 
 
 ### Functionality
-
+A search bar both at the top and the bottom of the page. The feature needs to atleast be able to display the matching course with the same exact course name. Ideally, the search bar should be able to update the page live, letter by letter, for instance, typing "A" would update the page to show every course that has the letter "A" and typing "r" after, creating "Ar" would show all the courses that have the string "Ar" in their course name, updating the page live. In addition, adding a dropdown autofill under the search bar, allowing the user to click on the available suggested searches. If a basic typo occurs, for instance the user wants to search the keyword "English" but searches up "Egnlish", would bring the user to a page that shows "Did you mean 'English'?"
 
 ### Design
 * The HTTP method is GET for this feature with a filter to sort the desired class by keyword
@@ -34,6 +35,8 @@ A list of all courses should be available for all users to see. The list of all 
 * The response returns a body which contains the JSON-formatted data for a specific list of courses that match the aforementioned keyword
 
 ### QA 
+Expected Output: Program returns list of courses that match keywords
+If user inputs keywords that that don’t match any courses or property names, return “no courses match search, please try again”
 
 
 
@@ -41,7 +44,7 @@ A list of all courses should be available for all users to see. The list of all 
 
 
 ### Functionality
-
+Each course would be assigned specific attributes, some being the level of the course (AP, Pre-AP, On Level, Dual Credit, and IB), whether the class is double blocked or single blocked, a semester only class or a full year class, a class requiring tryouts (soccer, basketball, etc.), a class requiring applications (wings, pals, etc.), the campus (Main campus, Steam campus, Technical Campus, Lowery). Near the search bar, a list of these attributes should be available, allowing users to tick the boxes of the attributes, specifically searching courses with those specific attributes. If a user inputs a series of attributes that do not match a course, they willbe redirected to an error message.
 
 ### Design
 * The HTTP method is GET which would use filter to sort the current list of classes by a set of avaliable attirbutes
@@ -51,6 +54,9 @@ A list of all courses should be available for all users to see. The list of all 
 * The response would contain a JSON-formatted list of classes that would be sorted by the aforementioned attribute in their parameter selection
 
 ### QA 
+Expected Output: Program returns list of courses that match attributes
+If user inputs invalid attributes, return “no courses match search, please try again”
+	Ex. Course = Algebra II, Attributes = Pre-AP or on-level
 
 
 
@@ -58,6 +64,8 @@ A list of all courses should be available for all users to see. The list of all 
 
 
 ### Functionality
+All courses should be able to be selected and placed in a separate pool. If courses are double blocked, then when one course is selected, the other course will be automatically added to the course pool. Add parameters that demand that all courses should be added for both semesters,(the total # of courses in the pool should be even, otherwise send an error message).
+
 
 
 ### Design
@@ -68,6 +76,8 @@ A list of all courses should be available for all users to see. The list of all 
 * There would be no response for this feature
 
 ### QA 
+Expected Output: Program has a add courses button respective to the personal schedule pool
+If the user adds invalid courses, return “Course does not exist” 
 
 
 
@@ -75,6 +85,7 @@ A list of all courses should be available for all users to see. The list of all 
 
 
 ### Functionality
+When a course is selected, the possible periods it could be placed in should be displayed. Visual representation could be added. When a course is selected and is moving to be placed into the schedule, it should be impossible to add the course in a place that already has another course in that spot.
 
 
 ### Design
@@ -85,7 +96,9 @@ A list of all courses should be available for all users to see. The list of all 
 * The response would be the updated schedule with the new class in the new position in their schedule
 
 ### QA 
-
+Expected Output: Course fits in schedule position
+If the user inputs in an invalid position, return “Invalid position for course”
+If there is a course already in that spot, replace it/swap positions
 
 
 ## Return Conflict Warnings Based on Class Placement
@@ -102,14 +115,15 @@ When a class is added in the scheduler app, conflict warnings of any issues, if 
 * The response would contain any potential errors or conflicts between course placement in a clients personal schedule
 
 ### QA 
+Expected Output: Display a clear and concise warning/error message ONLY if there is a conflict in the schedule. The message should clearly describe the correct error.
+Example: If user tries to schedule a high school class first period and steam class 2nd period, a warning message should pop up stating this specific conflict. 
 
 
 
 ## Create a Key/ID Within the Database for Each Schedule Created
 
-
 ### Functionality
-
+When a user creates schedule using the app, an ID or Key should be generated for that specific schedule and stored within the database. These IDs will contribute to the product, as the ID will allow consumers to access their schedule on any computer, as long as they have the code. The ID or key will be a string of 12 randomly generated and unique characters that will represent a schedule. The id should be able to refer to a schedule, including the positions of each course, the personal course pool, and any other errors that still exist within that schedule. Basically, the ID should represent exactly what the user has completed. IDs will be generated at the end of the schedule creation. A bare minimum requirement of this functionality will include an 12 digit ID generated which includes a pool of all selected courses. An ideal functionality of this feature can include the positions of all the courses, a pool of all the courses, and a way for these ID to be shared. A striking issue of an ID might be that if multiple users work on one ID, the system will have to recognize this, and fork the ID to create an identical schedule so multiple users can use the same ID.
 
 ### Design
 
@@ -129,6 +143,9 @@ When a class is added in the scheduler app, conflict warnings of any issues, if 
 * There would be no response for this feature
 
 ### Design
-
+For this feature,the HTTP method is POST where a counselor would invoke this API to add a new course to the master-course list. The parameters required would be the name of class and every single attribute all classes have which include but are not limited to GPA, teacher names, semester credits which campus the class is avaliable on etc. The status code would be "201 Created" if the parameters required are met. The response would be the name of the successfully created class as well as all parameters and attributes of the course.
 
 ### QA 
+Front end should be optimized to make scheduling for counselors easier.
+Counselors and students should be notified of a successful course selection by the counselor.
+Same QA regarding “Conflict Warnings Based on Class Placement” on the counselors end.
