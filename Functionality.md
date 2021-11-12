@@ -77,7 +77,9 @@ If the user adds invalid courses, return “Course does not exist”
 specific box which is chosen by a second parameter that is a number out of which allows you to select the speicific class period you want.
 
 ### QA 
-
+Expected Output: Course fits in schedule position
+If the user inputs in an invalid position, return “Invalid position for course”
+If there is a course already in that spot, replace it/swap positions
 
 
 ## Return Conflict Warnings Based on Class Placement
