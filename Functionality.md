@@ -62,11 +62,7 @@ Use a PUT HTTPS method to take class data from the master list of classes and ad
 
 ### QA 
 Expected Output: Program has a add courses button respective to the personal schedule pool
-<<<<<<< HEAD
 If the user adds invalid courses, return “Course does not exist” 
-=======
-If the user adds invalid courses, return “Course does not exist”
->>>>>>> c1561f7803600770566a991c353acf9e9c439eae
 
 
 
