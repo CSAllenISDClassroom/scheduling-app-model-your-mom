@@ -125,7 +125,11 @@ Example: If user tries to schedule a high school class first period and steam cl
 When a user creates schedule using the app, an ID or Key should be generated for that specific schedule and stored within the database. These IDs will contribute to the product, as the ID will allow consumers to access their schedule on any computer, as long as they have the code. The ID or key will be a string of 12 randomly generated and unique characters that will represent a schedule. The id should be able to refer to a schedule, including the positions of each course, the personal course pool, and any other errors that still exist within that schedule. Basically, the ID should represent exactly what the user has completed. IDs will be generated at the end of the schedule creation. A bare minimum requirement of this functionality will include an 12 digit ID generated which includes a pool of all selected courses. An ideal functionality of this feature can include the positions of all the courses, a pool of all the courses, and a way for these ID to be shared. A striking issue of an ID might be that if multiple users work on one ID, the system will have to recognize this, and fork the ID to create an identical schedule so multiple users can use the same ID.
 
 ### Design
-
+* The HTTP method for this feature is a POST which will assign a key being the ID or email and a value of a password.
+* There is no required parameters for this feature.
+* The body for this would include the input of a new email and an input of a new password in order to create a key value pair of the two.
+* The status code would be "201 Created" when the pair is made.
+* The response would be a new functioning account that can be accesed by any computer and provide any saved schedules.
 
 ### QA 
 - Keys should be easily replicable. 
