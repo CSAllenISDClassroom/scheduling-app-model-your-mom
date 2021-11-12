@@ -162,7 +162,7 @@ Same QA regarding “Conflict Warnings Based on Class Placement” on the counse
 ### Design
 
 ### QA
-
+The expected output is a page where users can create an account or log in to an existing account with credentials and view their progress and saved schedules. This page should only display when first visiting the website. 
 
 ## Password Retrevial System
 
@@ -180,7 +180,7 @@ Same QA regarding “Conflict Warnings Based on Class Placement” on the counse
 ### Design
 
 ### QA
-
+The expected output is the ability to export a completed schedule as a pdf or share it. Exporting should appear as an option for the user. Should display warning message only when attempting to export a schedule with conflicts still present. Display an error when attempting to share schedule with an invalid email address. 
 
 ## Class Availability & Tracking Class Spots
 
