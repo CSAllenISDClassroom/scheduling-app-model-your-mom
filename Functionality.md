@@ -162,7 +162,7 @@ Same QA regarding “Conflict Warnings Based on Class Placement” on the counse
 ### Design
 
 ### QA
-
+The expected output is a page where users can create an account or log in to an existing account with credentials and view their progress and saved schedules. This page should only display when first visiting the website. 
 
 ## Password Retrevial System
 
