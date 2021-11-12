@@ -10,7 +10,11 @@
 A list of all courses should be available for all users to see. The list of all courses should be stored within the database, and should be sent to the UI to display visually.  The scheduler app’s front page will include a list of all courses. Each course should include a name, course code, available class periods, and the level of the course. In an ideal setting, the list of courses should include all of the primary functionalities, and also include GPA level, teacher names, semester credits, and campus. The course list should be well coded, non-complex, easily alterable, and expandable.
 
 ### Design
-For this feature, the HTTP method is GET and there are no parameters or body necessary for invocation. The response would return a body that contains the JSON-formatted data for all of the courses and a HTTP 201 successfully created status code on completion. Some errors could occur if the request is unable to reach the server in the specified time.
+* The HTTP method is GET for this feature
+* There are no parameters required for invocation
+* There is no body required in the invocation of this feature
+* The status code would be "200 OK" if compiled properly
+* The response returns a body which contains the JSON-formatted data for a list of all courses
 
 ### QA 
 
@@ -23,7 +27,11 @@ For this feature, the HTTP method is GET and there are no parameters or body nec
 
 
 ### Design
-For this feature, the HTTP method is GET which would use filter to sort the desired class by keyword. The parameter, being the keyword would sort through the list of classes based on the keyword which may match class names, class attributes, or types of classes. There would be no specific body in this request. The status code of the request will return "200 OK" if all parameters are met, regardless if there are any avaliable classes. The response would contain a JSON list of classes that contain matching names, attributes, or types of classes. 
+* The HTTP method is GET for this feature with a filter to sort the desired class by keyword
+* The parameter for this feature would be the keyword which would be used to sort through the lsit of classes which may match class names, attributes, or types of classes
+* There is no body required in the invocation of this feature
+* The status code would be "200 OK" if compiled properly
+* The response returns a body which contains the JSON-formatted data for a specific list of courses that match the aforementioned keyword
 
 ### QA 
 
@@ -36,7 +44,11 @@ For this feature, the HTTP method is GET which would use filter to sort the desi
 
 
 ### Design
-For this feature, the HTTP method is GET which would use filter to sort the current list of classes by set of avaliable attributes. There are multiple possible parameters as the attributes of different classes varies, which could potentially be GPA level, teacher names, semester credits, which campus the class is avaliable on, etc. The status code of the request will return "200 OK" if all parameters are met. The response would contain a JSON list of classes that would sort the list of classes currently viewed by the client by a desired attributed through their parameter selection.
+* The HTTP method is GET which would use filter to sort the current list of classes by a set of avaliable attirbutes
+* The parameters for this feature would be a list of different attributes that pertain to classes such as GPA level, teacher names, semester credits, campus availability, etc.
+* There is no body required in the invocation of this feature
+* The status code would be "200 OK" if compiled properly
+* The response would contain a JSON-formatted list of classes that would be sorted by the aforementioned attribute in their parameter selection
 
 ### QA 
 
@@ -49,8 +61,12 @@ For this feature, the HTTP method is GET which would use filter to sort the curr
 
 
 ### Design
-Use a PUT HTTPS method to take class data from the master list of classes and add them to your own personnel list of classes this is used to 
-make a schedule based on the classes in your personnel list.
+* The HTTP method for this feature is PUT which the client would take a class from the list and add it to their personal schedule pool
+* There are no required parameters for this feature
+* The body for this feature would contain the name of the class so it can be sorted and added to the clients personal schedule pool
+* The status code would be "200 OK" if compiled properly
+* There would be no response for this feature
+
 ### QA 
 
 
@@ -62,8 +78,11 @@ make a schedule based on the classes in your personnel list.
 
 
 ### Design
-  Use the PUT HTTP method to change or add a specific course(if it's allowed by checking whether the class is offered during that period into 
-specific box which is chosen by a second parameter that is a number out of which allows you to select the speicific class period you want.
+* The HTTP method for this feature is PUT which the client would take the specific class from their personal schedule pool and add it to a specific position on their schedule
+* There are no required parameters for this feature
+* The body for this feature would contain the name of the class in the personal schedule pool and the position the client wants the class to be in their schedule
+* The status code would be "200 OK" if compiled properly
+* The response would be the updated schedule with the new class in the new position in their schedule
 
 ### QA 
 
@@ -75,10 +94,12 @@ specific box which is chosen by a second parameter that is a number out of which
 ### Functionality
 When a class is added in the scheduler app, conflict warnings of any issues, if any, should be displayed. Clearly noticeable pop-up errors messages should be visible to the user. These messages should contain concise but crucial information to inform the user of any issues. Said issues include if a class is not available in a particular period, if a class is double blocked (back to back periods) and overlaps with another class, if consecutive classes have STEAM center and Allen High School campus time constraints, if the user selects privilege periods that conflict with already selected courses, and if dual credit courses become incompatible as they conform to a Monday/Wednesday/Friday schedule rather than an A/B block schedule. The warning should contain the the name of the class or classes that have a conflict, the period of the class(es), and the name of any other classes that have a corresponding conflict.
 
-
-
 ### Design
-For this functionality the HTTP request would be GET with no peramiters a body consisting of the cources in JSON format. The response would give a body of the conflicts in JSON format and status code 200 OK. 
+* The HTTP method for this feature is GET with a filter to return conflict warnings based on the placement of courses in their personal schedule
+* The required parameter for this feature would be requesting to view conflicts instead of placing more classes 
+* There is no required body for invocation of this feature
+* The status code would be "200 OK" if compiled properly
+* The response would contain any potential errors or conflicts between course placement in a clients personal schedule
 
 ### QA 
 
@@ -101,7 +122,11 @@ For this functionality the HTTP request would be GET with no peramiters a body c
 
 
 ### Functionality
-For this feature,the HTTP method is POST where a counselor would invoke this API to add a new course to the master-course list. The parameters required would be the name of class and every single attribute all classes have which include but are not limited to GPA, teacher names, semester credits which campus the class is avaliable on etc. The status code would be "201 Created" if the parameters required are met. The response would be the name of the successfully created class as well as all parameters and attributes of the course.  
+* The HTTP method for this feature is POST where a counselor would invoke this API to add a new course to the master-list of courses
+* The parameters required would be the name of the class and every single attribute all classes have which include but are not limited to GPA, teacher names, semester credits, campus avalability, etc.
+* There is no required body for invocation of this feature
+* The status code would be "201 Created" if the parameters required are met
+* There would be no response for this feature
 
 ### Design
 
