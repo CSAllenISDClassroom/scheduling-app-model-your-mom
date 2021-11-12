@@ -231,6 +231,7 @@ Same QA regarding “Conflict Warnings Based on Class Placement” on the counse
 ## Auto-Fill Option for Incompleted Schedules
 
 ### Functionality
+An easily accessible button that allows students to place random classes into their missing schedule spots. In addition, the required core classes must be placed into the schedule prior to the autofill adding other elective classes. The button should allow the user to continousley keep autofilling and essentially "rolling", but a cooldown on the button would be necessary to limit the usage and overworking the server. At the very least, the function would make sure to fill in a student's schedule to have no missing gaps.
 
 ### Design
 
@@ -240,6 +241,7 @@ Same QA regarding “Conflict Warnings Based on Class Placement” on the counse
 ## Generate a Randomized Schedule Based on Selected Course Pool
 
 ### Functionality
+Similarly to the Auto-fill, a student would enter a new "mode" that would allow them to select up to 8 courses, being able to add them and remove them. After the courses have been confirmed by the student, the function will create a random schedule with all of the selected courses. In addition, the randomizer would ensure to prevent any conflicts, such as privledge periods during lunch or no available classes. The randomizer, like the autof-fill, should prioritize filling in core classes over electives and off periods.
 
 ### Design
 
