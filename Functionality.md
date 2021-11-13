@@ -162,11 +162,13 @@ Same QA regarding “Conflict Warnings Based on Class Placement” on the counse
 ## Login Using Saved Accounts
 
 ### Functionality
-
-### Design
 		Create a database where all the passwords and usenames are stored this could be in the orm of a dictionary because the dictionary woul have a work or the username and the password would be the definition. This 
 makes it so that whenever a user types in ther login inormation the username can be found in the dictionary and the password entered can b compared to the password in the dicionary and i they are the same the user will be
 given acees if no a incorrect password popup
+
+
+### Design
+
 ### QA
 The expected output is a page where users can create an account or log in to an existing account with credentials and view their progress and saved schedules. This page should only display when first visiting the website. 
 
