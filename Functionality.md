@@ -153,11 +153,10 @@ A signup system should be available for new users. Either there will be a sign u
 * The response would be a new functioning account that can be accesed by any computer and provide any saved schedules.
 
 ### QA 
-- Keys should be easily replicable. 
-The same key should always generate the same schedule.
--Keys should not appear when you are inside a schedule
-Expected Output: Display keys to manage the schedules. If no schedules exist, return “no existing schedule”. The message should clearly describe this error. 
-If you want to select a certain student’s schedule there should be keys to categorize this type of student.
+* Keys should be easily replicable. 
+*The same key should always generate the same schedule.
+*Expected Output: Display keys to manage the schedules. If no schedules exist, return “no existing schedule”. The message should clearly describe this error. 
+*If you want to select a certain student’s schedule there should be keys to categorize this type of student.
 
 
 
@@ -263,7 +262,7 @@ Since users need an account to use the scheduling app, any schedules they make w
 * The response would contain avalability for a class and the class spots avaliable in that course
 
 ### QA
-
+The scheduling system is expected to prevent overbooking of classes and show correct values for class fullness. To make this information easier to understand, some sort of visual system, such as color coding dpenedant on whether a class is empty, almost full, and completely full, should be implemented. 
 
 ## Generate a Class Priority/Popularity List
 
@@ -282,12 +281,12 @@ Create a function that returns an ordered list based on priority points
 *the response would be a JSON formatted array of classes in order based on priority points
 
 ### QA
-
+The Popularity list should be able to use data determining the popularity of each class and be able to correctly sort based on popularity. Additionally, to ensure the list is updating properly, a timestamp is needed for every update, and the outdate lists should still be available to the users. 
 
 ## Update(Change/Remove) Existing Course From Pool
 
 ### Functionality
-
+It should allow changes to be made to the existing course pool where the users courses should be stored. These changes include removing a selected course from the course pool as well as updating it for possible changes.
 ### Design
 
 ### QA
@@ -296,7 +295,7 @@ Create a function that returns an ordered list based on priority points
 ## Read a Selected Course Pool
 
 ### Functionality
-
+Retrieves a list of the courses in the course pool. It should be able to display nothing if nothing is there. Their should be no duplicates for 2 semester courses. They can be ordered based on priority.
 ### Design
 
 ### QA
@@ -321,5 +320,9 @@ Similarly to the Auto-fill, a student would enter a new "mode" that would allow 
 ### Design
 
 ### QA
-
+Classes should be randomly selected but still follow the rules of:
+*No duplicate classes
+*Some classes are exclsuive to certain grade levels and education
+*No conflicting times with periods
+*Has the required amount of class time on "A" and "B" days.
 
