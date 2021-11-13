@@ -204,7 +204,7 @@ The student should then receive an email, in this case it would be "ben-dover@st
 *Possible errors: "400 Bad Request" if the newPassword is the same as the old password
 
 ### QA
-
+THe expected output is a page allowing the user to request a new password if they have forgotten the current one. The password change will only be able to occur through a direct link sent to the user's email address. An error should pop-up if the new password is identical to the old password. A warning should pop up if the password does not meet expectations, for example if it is less than four characters long. Program should also display an error only if the inputted email does not match an existing account, otherwise it should send the password reset link to the specified email.
 
 ## Ability to Export and Share Schedules
 
