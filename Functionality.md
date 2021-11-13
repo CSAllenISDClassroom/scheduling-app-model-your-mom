@@ -180,8 +180,27 @@ The expected output is a page where users can create an account or log in to an 
 ### Functionality
 
 ### Design
-Takes the email provided checks if its a valid entry in the dictionary if it is the same then it will oward it to a function which provides the necessay information about the link to go to a specific part o the website 
-where the through a PUT function the password in the dictionary an be changed in correspndance to te email. 
+For this feature there are two different requests:
+
+*The HTTP method would be PUT for the first one as you are attempting to change the password
+*There would be no parameters
+*The body would be JSON formatted with the email of the user -> {"email": "ben-dover@student.allenisd.org"}
+*The status code would be "202 accepted" as the request has been received but not processed yet
+*Possible errors: "403 Forbidden" if unmatching email input
+
+The student should then receive an email, in this case it would be "ben-dover@student.allenisd.org", where the student would click on a link, with a token in the query tring, that would direct them to a form where they could input their new password.
+
+*The HTTP method would be PUT for the second one as you are now updating the password
+*There would be no parameters
+*The request body would take the token, given in the query string of the link in the email, and the new password:
+	{
+		"token": "a;lsdkfja;lknd"
+		"newPassword": "password"
+	}
+*the status code would be "200 OK"
+*no response
+*Possible errors: "400 Bad Request" if the newPassword is the same as the old password
+
 ### QA
 
 
@@ -190,7 +209,20 @@ where the through a PUT function the password in the dictionary an be changed in
 ### Functionality
 
 ### Design
-Design a way to onvert the file to a pdf or a custom file format this could allow for the user to import old schedules that they have already created or to share it in email form directly from the website or to save it as a pdf and to send to people. This could be through a pre existing library where the fuinctions nessecary could be aqcuired to properly convert the files.
+Create a function that could convert the user's schedule and classes into different file types such as pdf or png.
+
+Create a function that can convert a successfully created schedule into a link that can be used to access a schedule with different view or edit permissions designed by the user, similar to google docs share links.
+
+*GET method to retrieve export types
+*the parameters could be 'pdf', 'png', 'link'
+*the body would be the courses in the user's schedule
+*the status code would be "200 OK"
+*the response would contain a body with the specified file type (JSON format if link)
+
+Use the API endpoint to obtain the ready-to-export schedule
+
+User can email, text, and send on various social media platforms, depending on the platform selected, the API endpoint will be called to get the file type/link and the desired platform application will open up to allow the user to send the schedule.
+
 ### QA
 
 ## Class Availability & Tracking Class Spots
@@ -214,6 +246,15 @@ Since users need an account to use the scheduling app, any schedules they make w
 Through tracking course spots and availability, a schedule list with information regarding the popularity of each class is displayed to the user. Along with generating data about the number of users currently desiring a course, this feature also permits the list to be sorted by the popularity of a course. The attributes of each class should also be displayed on the list, such as the course's GPA, teacher, room number, and subject category. Some ideal features include a list of possible courses to replace ones a user currently has, as well as comparison features that allow the user to contrast their attributes.
 
 ### Design
+Create a function that assigns priority points to classes based on course availability and spots.
+
+Create a function that returns an ordered list based on priority points
+
+*GET request method
+*There are no parameters necessary
+*There is no body necessary
+*the status code would be "200 OK"
+*the response would be a JSON formatted array of classes in order based on priority points
 
 ### QA
 
