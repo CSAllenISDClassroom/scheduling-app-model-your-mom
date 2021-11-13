@@ -250,9 +250,9 @@ User can email, text, and send on various social media platforms, depending on t
 ### QA
 
 ## Class Availability & Tracking Class Spots
-Since users need an account to use the scheduling app, any schedules they make will create information stored within our databases. Through this, it can be deduced the number of students who are looking to enroll in a course at a certain period. On the scheduling app, the number of students that a class is limited to will be displayed, and a separate column denoting the number of students currently competing for that course is also shown  Ideally, some useful features include having information that displays to the user in a clear, color-coded format if a class is near empty, full, or excessively desired. 
 
 ### Functionality
+Since users need an account to use the scheduling app, any schedules they make will create information stored within our databases. Through this, it can be deduced the number of students who are looking to enroll in a course at a certain period. On the scheduling app, the number of students that a class is limited to will be displayed, and a separate column denoting the number of students currently competing for that course is also shown  Ideally, some useful features include having information that displays to the user in a clear, color-coded format if a class is near empty, full, or excessively desired. 
 
 ### Design
 * The HTTP method for this feature is GET 
@@ -313,7 +313,13 @@ For removing:
 
 ### Functionality
 Retrieves a list of the courses in the selected course pool. It should be able to display nothing if nothing is there. Their should be no duplicates for 2 semester courses. They can be ordered based on priority. The selected course pool will be the courses that a user chooses to add from the available course pool.
+
 ### Design
+*GET Method
+*No parameters necessary
+*the body would be the userID/email of the current student logged in -> {"email": "ben-dover@student.allenisd.org"}
+*the status code would be "200 OK"
+*there is no response necessary
 
 ### QA
 
@@ -325,6 +331,21 @@ Retrieves a list of the courses in the selected course pool. It should be able t
 An easily accessible button that allows students to place random classes into their missing schedule spots. In addition, the required core classes must be placed into the schedule prior to the autofill adding other elective classes. The button should allow the user to continousley keep autofilling and essentially "rolling", but a cooldown on the button would be necessary to limit the usage and overworking the server. At the very least, the function would make sure to fill in a student's schedule to have no missing gaps.
 
 ### Design
+Create a function that returns courses that could be added to a schedule, given a partially completed schedule
+
+*PUT method
+*no parameter necessary
+*the body would be the userID/email of the user to identify the correct schedule pool, along with the list of courses that could be added to the schedule:
+{
+	"email": "ben-dover@student.allenisd.org
+	"validCourses": [
+		{"courseID": 230498}		
+	]
+}
+*the status code would be "200 OK"
+*there is no response necessary
+*Possible errors: "409 Conflict" if there are no course combinations that can be added to the personal schedule
+
 
 ### QA
 
@@ -335,6 +356,14 @@ An easily accessible button that allows students to place random classes into th
 Similarly to the Auto-fill, a student would enter a new "mode" that would allow them to select up to 8 courses, being able to add them and remove them. After the courses have been confirmed by the student, the function will create a random schedule with all of the selected courses. In addition, the randomizer would ensure to prevent any conflicts, such as privledge periods during lunch or no available classes. The randomizer, like the autof-fill, should prioritize filling in core classes over electives and off periods.
 
 ### Design
+Create a function, randomScheduleGenerator, which creates a random valid schedule, overriding all current schedule positions
+
+*PUT method
+*no parameters necessary
+*the body would be the userID/email of the user for identification of the right schedule and course pool -> {"email" : "ben-dover@student.allenisd.org"}
+*the status code would be "200 OK"
+*Possible errors: "409 Conflict" which could occur if none of the courses in the course pool can make a schedule
+
 
 ### QA
 Classes should be randomly selected but still follow the rules of:
