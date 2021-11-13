@@ -122,7 +122,7 @@ Example: If user tries to schedule a high school class first period and steam cl
 ## Create a Sign Up for New Users
 
 ### Functionality
-When a user creates schedule using the app, an ID or Key should be generated for that specific schedule and stored within the database. These IDs will contribute to the product, as the ID will allow consumers to access their schedule on any computer, as long as they have the code. The ID or key will be a string of 12 randomly generated and unique characters that will represent a schedule. The id should be able to refer to a schedule, including the positions of each course, the personal course pool, and any other errors that still exist within that schedule. Basically, the ID should represent exactly what the user has completed. IDs will be generated at the end of the schedule creation. A bare minimum requirement of this functionality will include an 12 digit ID generated which includes a pool of all selected courses. An ideal functionality of this feature can include the positions of all the courses, a pool of all the courses, and a way for these ID to be shared. A striking issue of an ID might be that if multiple users work on one ID, the system will have to recognize this, and fork the ID to create an identical schedule so multiple users can use the same ID.
+A signup system should be available for new users. Either there will be a sign up system which utilzies username and passwords stored in a database to access a previously created schedule, or Google Sign In APIS are utilized. To signup a user will enter in a unique username,a password which must be 4 characters, and an email which links to their account. Each account created will be stored within the database, and measures must be made to prevent multiple users from being onthe same account at once. By creating a sign up for new users, users can access their schedules on any computer, and will be able to save changes on their schedule within the data base. In a perfect setting, this feature should utilize the linkage of already made google accounts for sign in. Google sign ins will simplify the account creation process for users, and allow for emails to be used for later features. At a minimum level, there some be some system in play which allows users to create an account via username and password, and this account stores their schedule data.
 
 ### Design
 * The HTTP method for this feature is a POST which will assign a key being the ID or email and a value of a password.
@@ -161,7 +161,7 @@ Same QA regarding “Conflict Warnings Based on Class Placement” on the counse
 ## Login Using Saved Accounts
 
 ### Functionality
-
+After creating a new account, either through registering with a personally created account with a username and password, or through Google sign-ins which use google accounts to sign in, (all of which is TBD), a user should be able to login to their account in any device. At a bare minimum, users must be able to login into accounts on any device, and access their schedule data, which is saved from previous sessions, and multiple users should not be able to access the same account at the same time. Schedules will be linked to accounts, and as the user edits their schedule, their changes are saved within the database, so if a user logs off or decides to log in to another device, schedules will always represent their latest schedule. A high goal for this feature will utilize google logins, which after signing up and creating an account through Google, will allow users to log back into their account with one click on the google log in option. Ideally, all account login and sign in features should utilize already made Google Accounts.
 
 ### Design
 *The HTTP method would be POST as you would be creating a session
@@ -177,19 +177,55 @@ The expected output is a page where users can create an account or log in to an 
 ## Password Retrevial System
 
 ### Functionality
+A password retrevial system will be a feature that allows users to create a new password if an old password is forgotten, or if a user decides to change their password. This feature will utilize the email linked to each account which was created during the sign-up/registration process. This feature will allow users to select an option in the login screen to "change their password" or "retrieve password", which will ask the user to put in their username. The username that the user will input will read off the database of all users, and will find the email address linked to that username and account. A program will automatically send an email to that email address, which includes a link to a box fill-in, where a user can input what they would like their new username to be. The high-end goal for this feature which would simplfy this process dramatically, will be that accounts are created using existing Google Accounts, which means all accounts will already be linked to their google email address, which makes password retrieval a lot easier. By using google accounts, the issue of invalid emails during account creation can be avoided, which means password retreivial emails will correctly send when a user requests for their password to be changed. A large issue with creating accounts independently and storing it within a database is valid email address. If a user accidentially puts in the wrong email address, then it will be impossible for a user to recover their password, so by using google accounts, if a user has password issues, then, they can go through Google's password retrevial process, which would most likely be more reliable. As a bare minimum requirement for this feature, users should be able to request a password change by inputting their unique username, and the password change request will be sent through the email that is linked to that unique username.
+
 
 ### Design
-Takes the email provided checks if its a valid entry in the dictionary if it is the same then it will oward it to a function which provides the necessay information about the link to go to a specific part o the website 
-where the through a PUT function the password in the dictionary an be changed in correspndance to te email. 
-### QA
+For this feature there are two different requests:
 
+*The HTTP method would be PUT for the first one as you are attempting to change the password
+*There would be no parameters
+*The body would be JSON formatted with the email of the user -> {"email": "ben-dover@student.allenisd.org"}
+*The status code would be "202 accepted" as the request has been received but not processed yet
+*Possible errors: "403 Forbidden" if unmatching email input
+
+The student should then receive an email, in this case it would be "ben-dover@student.allenisd.org", where the student would click on a link, with a token in the query tring, that would direct them to a form where they could input their new password.
+
+*The HTTP method would be PUT for the second one as you are now updating the password
+*There would be no parameters
+*The request body would take the token, given in the query string of the link in the email, and the new password:
+	{
+		"token": "a;lsdkfja;lknd"
+		"newPassword": "password"
+	}
+*the status code would be "200 OK"
+*no response
+*Possible errors: "400 Bad Request" if the newPassword is the same as the old password
+
+### QA
+THe expected output is a page allowing the user to request a new password if they have forgotten the current one. The password change will only be able to occur through a direct link sent to the user's email address. An error should pop-up if the new password is identical to the old password. A warning should pop up if the password does not meet expectations, for example if it is less than four characters long. Program should also display an error only if the inputted email does not match an existing account, otherwise it should send the password reset link to the specified email.
 
 ## Ability to Export and Share Schedules
 
 ### Functionality
+This feature at a bare minimum will allow users to convert schedules (in anystate, completed, incompleted, even if there are still errors), into a PDF format. By converting schedules into a PDF format, it will allow users to download their schedule in PDF form, which will allow users to open their schedules in PDF readers (When converted into a PDF a schedule will be ONLY a visual representation of their courses and the order of their courses, a PDF schedule cannot be edited and saved to an account). By allowing users to download PDFs, they will be able to print out their schedules, or share the PDF through email,text or any file sharing application. An ideal goal for the feature, will allow users to not only convert their file into a PDF, but also a png, and should be able to create a link which starts a download of their schedule, either in PDF or png form. A shareable link can be sent to others instead of the actual file, which allow scheudles to be sent through applications which might only allow for texts and hyperlinks to be sent. 
+
 
 ### Design
-Design a way to onvert the file to a pdf or a custom file format this could allow for the user to import old schedules that they have already created or to share it in email form directly from the website or to save it as a pdf and to send to people. This could be through a pre existing library where the fuinctions nessecary could be aqcuired to properly convert the files.
+Create a function that could convert the user's schedule and classes into different file types such as pdf or png.
+
+Create a function that can convert a successfully created schedule into a link that can be used to access a schedule with different view or edit permissions designed by the user, similar to google docs share links.
+
+*GET method to retrieve export types
+*the parameters could be 'pdf', 'png', 'link'
+*the body would be the courses in the user's schedule
+*the status code would be "200 OK"
+*the response would contain a body with the specified file type (JSON format if link)
+
+Use the API endpoint to obtain the ready-to-export schedule
+
+User can email, text, and send on various social media platforms, depending on the platform selected, the API endpoint will be called to get the file type/link and the desired platform application will open up to allow the user to send the schedule.
+
 ### QA
 
 ## Class Availability & Tracking Class Spots
@@ -213,6 +249,15 @@ The scheduling system is expected to prevent overbooking of classes and show cor
 Through tracking course spots and availability, a schedule list with information regarding the popularity of each class is displayed to the user. Along with generating data about the number of users currently desiring a course, this feature also permits the list to be sorted by the popularity of a course. The attributes of each class should also be displayed on the list, such as the course's GPA, teacher, room number, and subject category. Some ideal features include a list of possible courses to replace ones a user currently has, as well as comparison features that allow the user to contrast their attributes.
 
 ### Design
+Create a function that assigns priority points to classes based on course availability and spots.
+
+Create a function that returns an ordered list based on priority points
+
+*GET request method
+*There are no parameters necessary
+*There is no body necessary
+*the status code would be "200 OK"
+*the response would be a JSON formatted array of classes in order based on priority points
 
 ### QA
 The Popularity list should be able to use data determining the popularity of each class and be able to correctly sort based on popularity. Additionally, to ensure the list is updating properly, a timestamp is needed for every update, and the outdate lists should still be available to the users. 
@@ -220,7 +265,7 @@ The Popularity list should be able to use data determining the popularity of eac
 ## Update(Change/Remove) Existing Course From Pool
 
 ### Functionality
-
+It should allow changes to be made to the existing course pool where the users courses should be stored. These changes include removing a selected course from the course pool as well as updating it for possible changes.
 ### Design
 
 ### QA
@@ -229,7 +274,7 @@ The Popularity list should be able to use data determining the popularity of eac
 ## Read a Selected Course Pool
 
 ### Functionality
-
+Retrieves a list of the courses in the course pool. It should be able to display nothing if nothing is there. Their should be no duplicates for 2 semester courses. They can be ordered based on priority.
 ### Design
 
 ### QA
