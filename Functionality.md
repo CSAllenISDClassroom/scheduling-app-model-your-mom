@@ -6,16 +6,16 @@
 2. [Search Course List by Keyword](#search-course-list-by-keyword)
 3. [Filter Courses Based on Attributes](#filter-courses-based-on-attributes)
 4. [Add Courses Into a Personal Schedule Pool](#add-courses-into-a-personal-schedule-pool)
-5. [Put Courses in a Schedule, and Into a Schedule Position](#put-courses-in-a-schedule,-and-into-a-schedule-position)
+5. [Put Courses in a Schedule and Into a Schedule Position](#put-courses-in-a-schedule-and-into-a-schedule-position)
 6. [Return Conflict Warnings Based on Class Placement](#return-conflict-warnings-based-on-class-placement)
 7. [Create a Sign Up for New Users](#create-a-sign-up-for-new-users)
 8. [Counselor can Add Courses](#counselor-can-add-courses)
 9. [Login Using Saved Accounts](#login-using-saved-accounts)
 10. [Password Retrevial System](#password-retrevial-system)
 11. [Ability to Export and Share Schedules](#ability-to-export-and-share-schedules)
-12. [Class Availability & Tracking Class Spots](#class-availability-&-tracking-class-spots)
+12. [Class Availability and Tracking Class Spots](#class-availability-and-tracking-class-spots)
 13. [Generate a Class Priority/Popularity List](#generate-a-class-priority/popularity-list)
-14. [Update(Change/Remove) Existing Course From Selected Course Pool](#update(change/remove)-existing-course-from-selected-course-pool)
+14. [Update(Change/Remove) Existing Course From Selected Course Pool](#update-change-remove-existing-course-from-selected-course-pool)
 15. [Read a Selected Course Pool](#read-a-selected-course-pool)
 16. [AutoFill Option for Incompleted Schedules](#autofill-option-for-incompleted-schedules)
 17. [Generate a Randomized Schedule Based on Selected Course Pool](#generate-a-randomized-schedule-based-on-selected-course-pool)
@@ -101,11 +101,11 @@ If the user adds invalid courses, return “Course does not exist”
 
 
 
-## Put Courses in a Schedule, and Into a Schedule Position
+## Put Courses in a Schedule and Into a Schedule Position
 
 
 ### Functionality
-When a course is selected, the possible periods it could be placed in should be displayed. Visual representation could be added. When a course is selected and is moving to be placed into the schedule, it should be impossible to add the course in a place that already has another course in that spot.
+When a course is selected, the possible periods it could be placed in should be displayed. Visual representation could be added. When a course is selected and is moving to be placed into the schedule, it should be impossible to add the course in a place that already has another course in that spot. Courses from a pool of all selected course will be able to be placed into a schedule at a certain position, such as AP BC Calculus placed in Period 4.
 
 
 ### Design
