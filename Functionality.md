@@ -287,7 +287,24 @@ The Popularity list should be able to use data determining the popularity of eac
 
 ### Functionality
 It should allow changes to be made to the existing course pool where the users courses should be stored. These changes include removing a selected course from the course pool as well as updating it for possible changes. The selected course pool, is a pool of all courses that a user creates by adding courses from the pool of all available courses. The selected course pool will include all the courses that a user wants to use for their schedule. This feature will allow users to go back and edit/update their selected course pool if they made a mistake or wish to change it.
+
 ### Design
+
+For changing/swapping:
+*PUT method
+*parameter schedulePosition of type INT
+*the body would be the courseID of the course you are swapping in -> {"courseID": 20348}
+*the status code would be "200 OK"
+*there is no response necessary
+*Possible errors: "400 Bad Request" if the position is invalid OR if the courseID is invalid OR if the courseID is the same as the course at the specified position
+
+For removing:
+*DELETE method
+*parameter schedulePosition of type INT
+*no body is necessary
+*the status code would be "200 OK"
+*there is no response necessary
+*Possible errors: "400 Bad Request" if the position is invalid 
 
 ### QA
 
