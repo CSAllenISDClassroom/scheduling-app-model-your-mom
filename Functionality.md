@@ -266,7 +266,7 @@ Create a function that returns an ordered list based on priority points
 ## Update(Change/Remove) Existing Course From Pool
 
 ### Functionality
-
+It should allow changes to be made to the existing course pool where the users courses should be stored. These changes include removing a selected course from the course pool as well as updating it for possible changes.
 ### Design
 
 ### QA
@@ -275,7 +275,7 @@ Create a function that returns an ordered list based on priority points
 ## Read a Selected Course Pool
 
 ### Functionality
-
+Retrieves a list of the courses in the course pool. It should be able to display nothing if nothing is there. Their should be no duplicates for 2 semester courses. They can be ordered based on priority.
 ### Design
 
 ### QA
