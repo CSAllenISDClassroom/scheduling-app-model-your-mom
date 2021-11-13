@@ -132,11 +132,10 @@ When a user creates schedule using the app, an ID or Key should be generated for
 * The response would be a new functioning account that can be accesed by any computer and provide any saved schedules.
 
 ### QA 
-- Keys should be easily replicable. 
-The same key should always generate the same schedule.
--Keys should not appear when you are inside a schedule
-Expected Output: Display keys to manage the schedules. If no schedules exist, return “no existing schedule”. The message should clearly describe this error. 
-If you want to select a certain student’s schedule there should be keys to categorize this type of student.
+* Keys should be easily replicable. 
+*The same key should always generate the same schedule.
+*Expected Output: Display keys to manage the schedules. If no schedules exist, return “no existing schedule”. The message should clearly describe this error. 
+*If you want to select a certain student’s schedule there should be keys to categorize this type of student.
 
 
 
@@ -206,7 +205,7 @@ Since users need an account to use the scheduling app, any schedules they make w
 * The response would contain avalability for a class and the class spots avaliable in that course
 
 ### QA
-
+The scheduling system is expected to prevent overbooking of classes and show correct values for class fullness. To make this information easier to understand, some sort of visual system, such as color coding dpenedant on whether a class is empty, almost full, and completely full, should be implemented. 
 
 ## Generate a Class Priority/Popularity List
 
@@ -216,7 +215,7 @@ Through tracking course spots and availability, a schedule list with information
 ### Design
 
 ### QA
-
+The Popularity list should be able to use data determining the popularity of each class and be able to correctly sort based on popularity. Additionally, to ensure the list is updating properly, a timestamp is needed for every update, and the outdate lists should still be available to the users. 
 
 ## Update(Change/Remove) Existing Course From Pool
 
@@ -255,5 +254,9 @@ Similarly to the Auto-fill, a student would enter a new "mode" that would allow 
 ### Design
 
 ### QA
-
+Classes should be randomly selected but still follow the rules of:
+*No duplicate classes
+*Some classes are exclsuive to certain grade levels and education
+*No conflicting times with periods
+*Has the required amount of class time on "A" and "B" days.
 
