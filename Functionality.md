@@ -1,4 +1,25 @@
-# List of Features 
+# 2021-2022 Scheduler App Features
+
+#### Table of Contents
+
+1. [Retreive All Courses](#retrieve-all-courses)
+2. [Search Course List by Keyword](#search-course-list-by-keyword)
+3. [Filter Courses Based on Attributes](#filter-courses-based-on-attributes)
+4. [Add Courses Into a Personal Schedule Pool](#add-courses-into-a-personal-schedule-pool)
+5. [Put Courses in a Schedule, and Into a Schedule Position](#put-courses-in-a-schedule,-and-into-a-schedule-position)
+6. [Return Conflict Warnings Based on Class Placement](#return-conflict-warnings-based-on-class-placement)
+7. [Create a Sign Up for New Users](#create-a-sign-up-for-new-users)
+8. [Counselor can Add Courses](#counselor-can-add-courses)
+9. [Login Using Saved Accounts](#login-using-saved-accounts)
+10. [Password Retrevial System](#password-retrevial-system)
+11. [Ability to Export and Share Schedules](#ability-to-export-and-share-schedules)
+12. [Class Availability & Tracking Class Spots](#class-availability-&-tracking-class-spots)
+13. [Generate a Class Priority/Popularity List](#generate-a-class-priority/popularity-list)
+14. [Update(Change/Remove) Existing Course From Pool](#update(change/remove)-existing-course-from-pool)
+15. [Read a Selected Course Pool](#read-a-selected-course-pool)
+16. [AutoFill Option for Incompleted Schedules](#autofill-option-for-incompleted-schedules)
+17. [Generate a Randomized Schedule Based on Selected Course Pool](#generate-a-randomized-schedule-based-on-selected-course-pool)
+
 
 
 ## Retrieve All Courses 
