@@ -15,12 +15,12 @@
 11. [Ability to Export and Share Schedules](#ability-to-export-and-share-schedules)
 12. [Class Availability & Tracking Class Spots](#class-availability-&-tracking-class-spots)
 13. [Generate a Class Priority/Popularity List](#generate-a-class-priority/popularity-list)
-14. [Update(Change/Remove) Existing Course From Pool](#update(change/remove)-existing-course-from-pool)
+14. [Update(Change/Remove) Existing Course From Selected Course Pool](#update(change/remove)-existing-course-from-selected-course-pool)
 15. [Read a Selected Course Pool](#read-a-selected-course-pool)
 16. [AutoFill Option for Incompleted Schedules](#autofill-option-for-incompleted-schedules)
 17. [Generate a Randomized Schedule Based on Selected Course Pool](#generate-a-randomized-schedule-based-on-selected-course-pool)
 
-
+---
 
 ## Retrieve All Courses 
 
@@ -283,10 +283,10 @@ Create a function that returns an ordered list based on priority points
 ### QA
 The Popularity list should be able to use data determining the popularity of each class and be able to correctly sort based on popularity. Additionally, to ensure the list is updating properly, a timestamp is needed for every update, and the outdate lists should still be available to the users. 
 
-## Update(Change/Remove) Existing Course From Pool
+## Update(Change/Remove) Existing Course From Selected Course Pool
 
 ### Functionality
-It should allow changes to be made to the existing course pool where the users courses should be stored. These changes include removing a selected course from the course pool as well as updating it for possible changes.
+It should allow changes to be made to the existing course pool where the users courses should be stored. These changes include removing a selected course from the course pool as well as updating it for possible changes. The selected course pool, is a pool of all courses that a user creates by adding courses from the pool of all available courses. The selected course pool will include all the courses that a user wants to use for their schedule. This feature will allow users to go back and edit/update their selected course pool if they made a mistake or wish to change it.
 ### Design
 
 ### QA
@@ -295,7 +295,7 @@ It should allow changes to be made to the existing course pool where the users c
 ## Read a Selected Course Pool
 
 ### Functionality
-Retrieves a list of the courses in the course pool. It should be able to display nothing if nothing is there. Their should be no duplicates for 2 semester courses. They can be ordered based on priority.
+Retrieves a list of the courses in the selected course pool. It should be able to display nothing if nothing is there. Their should be no duplicates for 2 semester courses. They can be ordered based on priority. The selected course pool will be the courses that a user chooses to add from the available course pool.
 ### Design
 
 ### QA
