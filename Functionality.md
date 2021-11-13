@@ -162,12 +162,15 @@ Same QA regarding “Conflict Warnings Based on Class Placement” on the counse
 ## Login Using Saved Accounts
 
 ### Functionality
-		Create a database where all the passwords and usenames are stored this could be in the orm of a dictionary because the dictionary woul have a work or the username and the password would be the definition. This 
-makes it so that whenever a user types in ther login inormation the username can be found in the dictionary and the password entered can b compared to the password in the dicionary and i they are the same the user will be
-given acees if no a incorrect password popup
 
 
 ### Design
+*The HTTP method would be POST as you would be creating a session
+*If we have the addition of courses from counselors through the same application, The parameters would be 'counselor' or 'student'. Otherwise, there wouldn't be any parameters
+*The body would be a JSON formatted key-value pair including the email and the password -> {"ben-dover@student.allenisd.org": "password"}
+*The status code would be "201 Created" on creation of session
+*There would be no response
+*Possible errors: "403 Forbidden" if wrong credentials, "429 Too Many Requests" if there are too many attempts to login in a given time
 
 ### QA
 The expected output is a page where users can create an account or log in to an existing account with credentials and view their progress and saved schedules. This page should only display when first visiting the website. 
