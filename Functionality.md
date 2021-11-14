@@ -307,6 +307,10 @@ For removing:
 *Possible errors: "400 Bad Request" if the position is invalid 
 
 ### QA
+-Updating a course requires you to pay attention at the course level when it comes to leveling down and course availability in general when it comes to finding a alternate course to replace the original course. You use this “update” only when you want to change or remove something from the schedule. 
+
+Expected Output: According to class level and class availability, you need to figure out if it is a level down or a course change. In other words, you might need to return this. Then you do the respective changes. 
+
 
 
 ## Read a Selected Course Pool
@@ -322,6 +326,9 @@ Retrieves a list of the courses in the selected course pool. It should be able t
 *there is no response necessary
 
 ### QA
+-The selected course pool should be readable by the computer and managed appropriately. You read a course pool only when you want to alter it or analyze the classes. 
+Expected Output:There should be a program which can read the selected courses and do the appropriate alterations or anaylzations for the courses. 
+
 
 
 
@@ -348,6 +355,9 @@ Create a function that returns courses that could be added to a schedule, given 
 
 
 ### QA
+In case the schedule remains empty, there should be a auto-fill mechanism which randomly assigns courses according to availability. This option should not appear when the schedule is complete. 
+
+Expected Output: .random is used to iterate throughout the courses and perform its function.In other words, the courses are randomized. 
 
 
 ## Generate a Randomized Schedule Based on Selected Course Pool
