@@ -154,13 +154,13 @@ A signup system should be available for new users. Either there will be a sign u
 
 ### QA 
 * Keys should be easily replicable. 
-*The same key should always generate the same schedule.
-*Expected Output: Display keys to manage the schedules. If no schedules exist, return “no existing schedule”. The message should clearly describe this error. 
-*If you want to select a certain student’s schedule there should be keys to categorize this type of student.
+* The same key should always generate the same schedule.
+* Expected Output: Display keys to manage the schedules. If no schedules exist, return “no existing schedule”. The message should clearly describe this error. 
+* If you want to select a certain student’s schedule there should be keys to categorize this type of student.
 
 - Keys should be easily replicable. 
 The same key should always generate the same schedule.
--Keys should not appear when you are inside a schedule
+- Keys should not appear when you are inside a schedule
 Expected Output: Display keys to manage the schedules. If no schedules exist, return “no existing schedule”. The message should clearly describe this error. 
 If you want to select a certain student’s schedule there should be keys to categorize this type of student.
 
@@ -190,12 +190,12 @@ Same QA regarding “Conflict Warnings Based on Class Placement” on the counse
 After creating a new account, either through registering with a personally created account with a username and password, or through Google sign-ins which use google accounts to sign in, (all of which is TBD), a user should be able to login to their account in any device. At a bare minimum, users must be able to login into accounts on any device, and access their schedule data, which is saved from previous sessions, and multiple users should not be able to access the same account at the same time. Schedules will be linked to accounts, and as the user edits their schedule, their changes are saved within the database, so if a user logs off or decides to log in to another device, schedules will always represent their latest schedule. A high goal for this feature will utilize google logins, which after signing up and creating an account through Google, will allow users to log back into their account with one click on the google log in option. Ideally, all account login and sign in features should utilize already made Google Accounts.
 
 ### Design
-*The HTTP method would be POST as you would be creating a session
-*If we have the addition of courses from counselors through the same application, The parameters would be 'counselor' or 'student'. Otherwise, there wouldn't be any parameters
-*The body would be a JSON formatted key-value pair including the email and the password -> {"ben-dover@student.allenisd.org": "password"}
-*The status code would be "201 Created" on creation of session
-*There would be no response
-*Possible errors: "403 Forbidden" if wrong credentials, "429 Too Many Requests" if there are too many attempts to login in a given time
+* The HTTP method would be POST as you would be creating a session
+* If we have the addition of courses from counselors through the same application, The parameters would be 'counselor' or 'student'. Otherwise, there wouldn't be any parameters
+* The body would be a JSON formatted key-value pair including the email and the password -> {"ben-dover@student.allenisd.org": "password"}
+* The status code would be "201 Created" on creation of session
+* There would be no response
+* Possible errors: "403 Forbidden" if wrong credentials, "429 Too Many Requests" if there are too many attempts to login in a given time
 
 ### QA
 The expected output is a page where users can create an account or log in to an existing account with credentials and view their progress and saved schedules. This page should only display when first visiting the website. 
@@ -209,27 +209,29 @@ A password retrevial system will be a feature that allows users to create a new 
 ### Design
 For this feature there are two different requests:
 
-*The HTTP method would be PUT for the first one as you are attempting to change the password
-*There would be no parameters
-*The body would be JSON formatted with the email of the user -> {"email": "ben-dover@student.allenisd.org"}
-*The status code would be "202 accepted" as the request has been received but not processed yet
-*Possible errors: "403 Forbidden" if unmatching email input
+* The HTTP method would be PUT for the first one as you are attempting to change the password
+* There would be no parameters
+* The body would be JSON formatted with the email of the user -> {"email": "ben-dover@student.allenisd.org"}
+* The status code would be "202 accepted" as the request has been received but not processed yet
+* Possible errors: "403 Forbidden" if unmatching email input
 
 The student should then receive an email, in this case it would be "ben-dover@student.allenisd.org", where the student would click on a link, with a token in the query tring, that would direct them to a form where they could input their new password.
 
-*The HTTP method would be PUT for the second one as you are now updating the password
-*There would be no parameters
-*The request body would take the token, given in the query string of the link in the email, and the new password:
-	{
-		"token": "a;lsdkfja;lknd"
-		"newPassword": "password"
-	}
-*the status code would be "200 OK"
-*no response
-*Possible errors: "400 Bad Request" if the newPassword is the same as the old password
+* The HTTP method would be PUT for the second one as you are now updating the password
+* There would be no parameters
+* The request body would take the token, given in the query string of the link in the email, and the new password:
+```json
+{
+	"token": "a;lsdkfja;lknd"
+	"newPassword": "password"
+}
+```
+* The status code would be "200 OK"
+* No response
+* Possible errors: "400 Bad Request" if the newPassword is the same as the old password
 
 ### QA
-THe expected output is a page allowing the user to request a new password if they have forgotten the current one. The password change will only be able to occur through a direct link sent to the user's email address. An error should pop-up if the new password is identical to the old password. A warning should pop up if the password does not meet expectations, for example if it is less than four characters long. Program should also display an error only if the inputted email does not match an existing account, otherwise it should send the password reset link to the specified email.
+The expected output is a page allowing the user to request a new password if they have forgotten the current one. The password change will only be able to occur through a direct link sent to the user's email address. An error should pop-up if the new password is identical to the old password. A warning should pop up if the password does not meet expectations, for example if it is less than four characters long. Program should also display an error only if the inputted email does not match an existing account, otherwise it should send the password reset link to the specified email.
 
 ## Ability to Export and Share Schedules
 
@@ -238,19 +240,17 @@ This feature at a bare minimum will allow users to convert schedules (in anystat
 
 
 ### Design
-Create a function that could convert the user's schedule and classes into different file types such as pdf or png.
+1. Create a function that could convert the user's schedule and classes into different file types such as pdf or png.
+2. Create a function that can convert a successfully created schedule into a link that can be used to access a schedule with different view or edit permissions designed by the user, similar to google docs share links.
 
-Create a function that can convert a successfully created schedule into a link that can be used to access a schedule with different view or edit permissions designed by the user, similar to google docs share links.
+* GET method to retrieve export types
+* The parameters could be 'pdf', 'png', 'link'
+* The body would be the courses in the user's schedule
+* The status code would be "200 OK"
+* The response would contain a body with the specified file type (JSON format if link)
 
-*GET method to retrieve export types
-*the parameters could be 'pdf', 'png', 'link'
-*the body would be the courses in the user's schedule
-*the status code would be "200 OK"
-*the response would contain a body with the specified file type (JSON format if link)
-
-Use the API endpoint to obtain the ready-to-export schedule
-
-User can email, text, and send on various social media platforms, depending on the platform selected, the API endpoint will be called to get the file type/link and the desired platform application will open up to allow the user to send the schedule.
+1. Use the API endpoint to obtain the ready-to-export schedule
+2. User can email, text, and send on various social media platforms, depending on the platform selected, the API endpoint will be called to get the file type/link and the desired platform application will open up to allow the user to send the schedule.
 
 ### QA
 
@@ -275,15 +275,14 @@ The scheduling system is expected to prevent overbooking of classes and show cor
 Through tracking course spots and availability, a schedule list with information regarding the popularity of each class is displayed to the user. Along with generating data about the number of users currently desiring a course, this feature also permits the list to be sorted by the popularity of a course. The attributes of each class should also be displayed on the list, such as the course's GPA, teacher, room number, and subject category. Some ideal features include a list of possible courses to replace ones a user currently has, as well as comparison features that allow the user to contrast their attributes.
 
 ### Design
-Create a function that assigns priority points to classes based on course availability and spots.
+1. Create a function that assigns priority points to classes based on course availability and spots.
+2. Create a function that returns an ordered list based on priority points
 
-Create a function that returns an ordered list based on priority points
-
-*GET request method
-*There are no parameters necessary
-*There is no body necessary
-*the status code would be "200 OK"
-*the response would be a JSON formatted array of classes in order based on priority points
+* GET request method
+* There are no parameters necessary
+* There is no body necessary
+* The status code would be "200 OK"
+* The response would be a JSON formatted array of classes in order based on priority points
 
 ### QA
 The Popularity list should be able to use data determining the popularity of each class and be able to correctly sort based on popularity. Additionally, to ensure the list is updating properly, a timestamp is needed for every update, and the outdate lists should still be available to the users. 
@@ -294,22 +293,21 @@ The Popularity list should be able to use data determining the popularity of eac
 It should allow changes to be made to the existing course pool where the users courses should be stored. These changes include removing a selected course from the course pool as well as updating it for possible changes. The selected course pool, is a pool of all courses that a user creates by adding courses from the pool of all available courses. The selected course pool will include all the courses that a user wants to use for their schedule. This feature will allow users to go back and edit/update their selected course pool if they made a mistake or wish to change it.
 
 ### Design
+1. For changing/swapping:
+..* PUT method
+..* Parameter schedulePosition of type INT
+..* The body would be the courseID of the course you are swapping in -> {"courseID": 20348}
+..* The status code would be "200 OK"
+..* There is no response necessary
+..* Possible errors: "400 Bad Request" if the position is invalid OR if the courseID is invalid OR if the courseID is the same as the course at the specified position
 
-For changing/swapping:
-*PUT method
-*parameter schedulePosition of type INT
-*the body would be the courseID of the course you are swapping in -> {"courseID": 20348}
-*the status code would be "200 OK"
-*there is no response necessary
-*Possible errors: "400 Bad Request" if the position is invalid OR if the courseID is invalid OR if the courseID is the same as the course at the specified position
-
-For removing:
-*DELETE method
-*parameter schedulePosition of type INT
-*no body is necessary
-*the status code would be "200 OK"
-*there is no response necessary
-*Possible errors: "400 Bad Request" if the position is invalid 
+2. For removing:
+..* DELETE method
+..* Parameter schedulePosition of type INT
+..* No body is necessary
+..* The status code would be "200 OK"
+..* There is no response necessary
+..* Possible errors: "400 Bad Request" if the position is invalid 
 
 ### QA
 -Updating a course requires you to pay attention at the course level when it comes to leveling down and course availability in general when it comes to finding a alternate course to replace the original course. You use this “update” only when you want to change or remove something from the schedule. 
@@ -324,11 +322,11 @@ Expected Output: According to class level and class availability, you need to fi
 Retrieves a list of the courses in the selected course pool. It should be able to display nothing if nothing is there. Their should be no duplicates for 2 semester courses. They can be ordered based on priority. The selected course pool will be the courses that a user chooses to add from the available course pool.
 
 ### Design
-*GET Method
-*No parameters necessary
-*the body would be the userID/email of the current student logged in -> {"email": "ben-dover@student.allenisd.org"}
-*the status code would be "200 OK"
-*there is no response necessary
+* GET Method
+* No parameters necessary
+* The body would be the userID/email of the current student logged in -> {"email": "ben-dover@student.allenisd.org"}
+* The status code would be "200 OK"
+* There is no response necessary
 
 ### QA
 -The selected course pool should be readable by the computer and managed appropriately. You read a course pool only when you want to alter it or analyze the classes. 
@@ -345,18 +343,20 @@ An easily accessible button that allows students to place random classes into th
 ### Design
 Create a function that returns courses that could be added to a schedule, given a partially completed schedule
 
-*PUT method
-*no parameter necessary
-*the body would be the userID/email of the user to identify the correct schedule pool, along with the list of courses that could be added to the schedule:
+* PUT method
+* No parameter necessary
+* The body would be the userID/email of the user to identify the correct schedule pool, along with the list of courses that could be added to the schedule:
+```json
 {
 	"email": "ben-dover@student.allenisd.org
 	"validCourses": [
 		{"courseID": 230498}		
 	]
 }
-*the status code would be "200 OK"
-*there is no response necessary
-*Possible errors: "409 Conflict" if there are no course combinations that can be added to the personal schedule
+```
+* The status code would be "200 OK"
+* There is no response necessary
+* Possible errors: "409 Conflict" if there are no course combinations that can be added to the personal schedule
 
 
 ### QA
@@ -373,17 +373,17 @@ Similarly to the Auto-fill, a student would enter a new "mode" that would allow 
 ### Design
 Create a function, randomScheduleGenerator, which creates a random valid schedule, overriding all current schedule positions
 
-*PUT method
-*no parameters necessary
-*the body would be the userID/email of the user for identification of the right schedule and course pool -> {"email" : "ben-dover@student.allenisd.org"}
-*the status code would be "200 OK"
-*Possible errors: "409 Conflict" which could occur if none of the courses in the course pool can make a schedule
+* PUT method
+* No parameters necessary
+* The body would be the userID/email of the user for identification of the right schedule and course pool -> {"email" : "ben-dover@student.allenisd.org"}
+* The status code would be "200 OK"
+* Possible errors: "409 Conflict" which could occur if none of the courses in the course pool can make a schedule
 
 
 ### QA
 Classes should be randomly selected but still follow the rules of:
-*No duplicate classes
-*Some classes are exclsuive to certain grade levels and education
-*No conflicting times with periods
-*Has the required amount of class time on "A" and "B" days.
+* No duplicate classes
+* Some classes are exclsuive to certain grade levels and education
+* No conflicting times with periods
+* Has the required amount of class time on "A" and "B" days.
 
