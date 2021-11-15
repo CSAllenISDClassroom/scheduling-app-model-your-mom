@@ -294,20 +294,20 @@ It should allow changes to be made to the existing course pool where the users c
 
 ### Design
 1. For changing/swapping:
-..* PUT method
-..* Parameter schedulePosition of type INT
-..* The body would be the courseID of the course you are swapping in -> {"courseID": 20348}
-..* The status code would be "200 OK"
-..* There is no response necessary
-..* Possible errors: "400 Bad Request" if the position is invalid OR if the courseID is invalid OR if the courseID is the same as the course at the specified position
+* PUT method
+* Parameter schedulePosition of type INT
+* The body would be the courseID of the course you are swapping in -> {"courseID": 20348}
+* The status code would be "200 OK"
+* There is no response necessary
+* Possible errors: "400 Bad Request" if the position is invalid OR if the courseID is invalid OR if the courseID is the same as the course at the specified position
 
 2. For removing:
-..* DELETE method
-..* Parameter schedulePosition of type INT
-..* No body is necessary
-..* The status code would be "200 OK"
-..* There is no response necessary
-..* Possible errors: "400 Bad Request" if the position is invalid 
+* DELETE method
+* Parameter schedulePosition of type INT
+* No body is necessary
+* The status code would be "200 OK"
+* There is no response necessary
+* Possible errors: "400 Bad Request" if the position is invalid 
 
 ### QA
 -Updating a course requires you to pay attention at the course level when it comes to leveling down and course availability in general when it comes to finding a alternate course to replace the original course. You use this “update” only when you want to change or remove something from the schedule. 
