@@ -7,6 +7,8 @@
 ### Required Documentation  
  - GIT Version Control - https://www.atlassian.com/git/tutorials/what-is-version-control
  - Markdown Documentation - https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet
+ - Scrum Development - https://www.atlassian.com/agile/scrum
+ - Branching Strategies - https://www.agileconnection.com/article/picking-right-branch-merge-strategy
 
 - - -
 ### Team Roles
