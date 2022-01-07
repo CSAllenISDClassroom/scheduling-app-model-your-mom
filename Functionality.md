@@ -253,6 +253,7 @@ This feature at a bare minimum will allow users to convert schedules (in anystat
 2. User can email, text, and send on various social media platforms, depending on the platform selected, the API endpoint will be called to get the file type/link and the desired platform application will open up to allow the user to send the schedule.
 
 ### QA
+When a schedule exported onto a PDF, the file should keep the formatting of the webpage or be formatted so that the PDF looks nice and readable. 
 
 ## Class Availability & Tracking Class Spots
 
