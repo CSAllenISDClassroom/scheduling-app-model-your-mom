@@ -21,7 +21,7 @@
 | Kush | QA Engineer |
 | Elvin | Database Administrator |
 | Vyom | QA Manager |
-| Rohan | Backend Developer |
+| Rohan | UX Devoloper |
 | Kian | Backend Developer |
 | Grayson | Backend Developer |
 | Logan | Backend Developer |
