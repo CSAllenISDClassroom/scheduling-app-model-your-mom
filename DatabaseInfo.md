@@ -8,4 +8,4 @@
 - This database structure will be used as a model or preview to refer to when creating the actual database. 
 
 ###
-- ![alt text](https://ibb.co/xjmrw20)
+- ![alt text](https://i.ibb.co/KqN8B5k/schedule.png)
