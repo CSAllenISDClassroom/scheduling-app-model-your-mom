@@ -24,7 +24,7 @@
  
 ###
 - ![alt text](https://drive.google.com/file/d/14yBU-RFLtM8yBv53cLbnNgy5tnjQMutj/view?usp=sharing)
-- ![alt text](https://static.wikia.nocookie.net/kboy-group/images/f/fa/Mark_Universe_%283%29.jpeg/revision/latest?cb=20211119174958)
+- ![alt text]()
 - ![alt text](http://url/to/img.png)
 - ![alt text](http://url/to/img.png)
 - ![alt text](http://url/to/img.png)
