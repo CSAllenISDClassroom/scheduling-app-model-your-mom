@@ -432,7 +432,7 @@ Classes should be randomly selected but still follow the rules of:
 * No conflicting times with periods
 * Has the required amount of class time on "A" and "B" days.
 
-### UI/UX Design pathway 
+## UI/UX Design pathway 
 *This shows the basic steps that are necessary to create a basic user interface.
 *It also shows the a generalized design Idea for how the flow of what the user is doing can be viewed and interact with.
 *It also gives the UI/UX and backend devolpers a framework of basic ideas and how the many parts interact with each other to create a easy experience.
