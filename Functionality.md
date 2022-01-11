@@ -106,7 +106,16 @@ Each course would be assigned specific attributes, some being the level of the c
       }		
 	]
   }
-  
+ {"courses": [
+	  {
+		"name":"Chemistry",
+		"semester":2,
+		"period":4,
+		"location":"LFC",
+		"classDifficulty:"Pre-AP"
+      }		
+	]
+  } 
 
 ### QA 
 Expected Output: Program returns list of courses that match attributes
