@@ -19,6 +19,7 @@
 15. [Read a Selected Course Pool](#read-a-selected-course-pool)
 16. [AutoFill Option for Incompleted Schedules](#autofill-option-for-incompleted-schedules)
 17. [Generate a Randomized Schedule Based on Selected Course Pool](#generate-a-randomized-schedule-based-on-selected-course-pool)
+18. [UI/UX Design Idea and Flow Chart](#UI/UX Design pathway)
 
 ---
 
@@ -432,10 +433,11 @@ Classes should be randomly selected but still follow the rules of:
 * Has the required amount of class time on "A" and "B" days.
 
 ### UI/UX Design pathway 
-This shows the basic steps that are necessary to create a basic user interface.
-It also shows the a generalized design Idea for how the flow of what the user is doing can be viewed and interact with.
-It also gives the UI/UX and backend devolpers a framework of basic ideas and how the many parts interact with each other to create a easy experience.
-This make devlopment faster
+*This shows the basic steps that are necessary to create a basic user interface.
+*It also shows the a generalized design Idea for how the flow of what the user is doing can be viewed and interact with.
+*It also gives the UI/UX and backend devolpers a framework of basic ideas and how the many parts interact with each other to create a easy experience.
+*This make devlopment faster
+
 ![new](https://user-images.githubusercontent.com/54645503/148978870-81640694-ef89-4ddc-bddc-982c578d3e92.jpg)
 
 
