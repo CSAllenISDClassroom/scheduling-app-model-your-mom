@@ -19,7 +19,7 @@
 15. [Read a Selected Course Pool](#read-a-selected-course-pool)
 16. [AutoFill Option for Incompleted Schedules](#autofill-option-for-incompleted-schedules)
 17. [Generate a Randomized Schedule Based on Selected Course Pool](#generate-a-randomized-schedule-based-on-selected-course-pool)
-18. [UI/UX Design Idea and Flow Chart](#UI/UX-Design-pathway)
+18. [UI/UX Design Idea and Flow Chart](#ui/ux-design-pathway)
 
 ---
 
