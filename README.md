@@ -46,4 +46,6 @@
 #### Engineers
   * **QA Engineer**: This engineer is responsible for implementing a technology that has the ability to verify the quality of the software according to the MVP. Directed by the QA manager, this engineer should expect to complete the tests by the specified deadlines.
   
+  * **UI/UX Developer**: This engineer is responsible for implementing a thoughtfully planned web page that is created according to the MVP. This engineer will be directed by the Product, Project, and Developmental Managers to create a seamless front-end that enhances the users experience.
+  
   * **Backend Development Engineer**: This engineer is responsible for implementing the APIs, data structures, and architecture of the code, figured out by the team as a whole. They will work directly with the development manager to complete tasks by the specified deadlines.
