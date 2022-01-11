@@ -22,19 +22,27 @@
 
 ---
 
-## Retrieve All Courses 
+## Retrieve All Courses
 
 
 ### Functionality 
 A list of all courses should be available for all users to see. The list of all courses should be stored within the database, and should be sent to the UI to display visually.  The scheduler app’s front page will include a list of all courses. Each course should include a name, course code, available class periods, and the level of the course. In an ideal setting, the list of courses should include all of the primary functionalities, and also include GPA level, teacher names, semester credits, and campus. The course list should be well coded, non-complex, easily alterable, and expandable.
 
 ### Design
-* The HTTP method is GET for this feature
-* There are no parameters required for invocation
-* There is no body required in the invocation of this feature
+* GET /courses
+* Parameters: none
+* Body: none
 * The status code would be "200 OK" if compiled properly
-* The response returns a body which contains the JSON-formatted data for a list of all courses
-
+* Response: 
+  {"courses": [
+	  {
+		"name":String,
+		"semester":Int,
+		"period":Int
+      }		
+	]
+  }
+  
 ### QA 
 Expected Output: All offered courses are returned. Program should display a list of all classes that are offered by the school, including their given attributes. The given attributes returned with the course should include class subject and difficulty level (on-level, Pre-AP, AP, IB, DC). 
 Ex. Course = Algebra II, Attributes = Pre-AP Level and Math Course
@@ -48,12 +56,20 @@ Ex. Course = Algebra II, Attributes = Pre-AP Level and Math Course
 A search bar both at the top and the bottom of the page. The feature needs to atleast be able to display the matching course with the same exact course name. Ideally, the search bar should be able to update the page live, letter by letter, for instance, typing "A" would update the page to show every course that has the letter "A" and typing "r" after, creating "Ar" would show all the courses that have the string "Ar" in their course name, updating the page live. In addition, adding a dropdown autofill under the search bar, allowing the user to click on the available suggested searches. If a basic typo occurs, for instance the user wants to search the keyword "English" but searches up "English", would bring the user to a page that shows "Did you mean 'English'?"
 
 ### Design
-* The HTTP method is GET for this feature with a filter to sort the desired class by keyword
-* The parameter for this feature would be the keyword which would be used to sort through the lsit of classes which may match class names, attributes, or types of classes
-* There is no body required in the invocation of this feature
+* GET /courses?query="math"
+* Parameters: {"query":String}
+* Body: none
 * The status code would be "200 OK" if compiled properly
-* The response returns a body which contains the JSON-formatted data for a specific list of courses that match the aforementioned keyword
-
+* Response:
+ {"courses": [
+	  {
+		"name":String,
+		"semester":Int,
+		"period":Int
+      }		
+	]
+  }
+  
 ### QA 
 Expected Output: Program returns list of courses that match keywords
 If user inputs keywords that that don’t match any courses or property names, return “no courses match search, please try again”
@@ -67,11 +83,22 @@ If user inputs keywords that that don’t match any courses or property names, r
 Each course would be assigned specific attributes, some being the level of the course (AP, Pre-AP, On Level, Dual Credit, and IB), whether the class is double blocked or single blocked, a semester only class or a full year class, a class requiring tryouts (soccer, basketball, etc.), a class requiring applications (wings, pals, etc.), the campus (Main campus, Steam campus, Technical Campus, Lowery). Near the search bar, a list of these attributes should be available, allowing users to tick the boxes of the attributes, specifically searching courses with those specific attributes. If a user inputs a series of attributes that do not match a course, they willbe redirected to an error message.
 
 ### Design
-* The HTTP method is GET which would use filter to sort the current list of classes by a set of avaliable attirbutes
-* The parameters for this feature would be a list of different attributes that pertain to classes such as GPA level, teacher names, semester credits, campus availability, etc.
-* There is no body required in the invocation of this feature
+* GET /courses?isAP=true&&...
+* Parameters: Any numbter of filters, including: classDifficulty, availability, isFullYear, isDoubleBlocked, location, etc.
+* Body:No body, all parameters in query string
 * The status code would be "200 OK" if compiled properly
-* The response would contain a JSON-formatted list of classes that would be sorted by the aforementioned attribute in their parameter selection
+* Response:
+ {"courses": [
+	  {
+		"name":"Biology",
+		"semester":1,
+		"period":2,
+		"location":"AHS",
+		"classDifficulty:"AP"
+      }		
+	]
+  }
+  
 
 ### QA 
 Expected Output: Program returns list of courses that match attributes
