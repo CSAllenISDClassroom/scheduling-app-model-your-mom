@@ -63,9 +63,9 @@ A search bar both at the top and the bottom of the page. The feature needs to at
 * Response:
  {"courses": [
 	  {
-		"name":String,
-		"semester":Int,
-		"period":Int
+		"name":"Math I",
+		"semester":1,
+		"period":3
       }		
 	]
   }
@@ -116,11 +116,12 @@ All courses should be able to be selected and placed in a separate pool. If cour
 
 
 ### Design
-* The HTTP method for this feature is PUT which the client would take a class from the list and add it to their personal schedule pool
-* There are no required parameters for this feature
-* The body for this feature would contain the name of the class so it can be sorted and added to the clients personal schedule pool
-* The status code would be "200 OK" if compiled properly
+* PUT /user/"id"/pool
+* Parameter: none
+* Body: JSON of course names, semesters, categories, credits
+* The status code would be "200 OK" if works
 * There would be no response for this feature
+* Errors: insufficient credits, not proper selection of core and elective courses
 
 ### QA 
 Expected Output: Program has a add courses button respective to the personal schedule pool
@@ -136,11 +137,13 @@ When a course is selected, the possible periods it could be placed in should be 
 
 
 ### Design
-* The HTTP method for this feature is PUT which the client would take the specific class from their personal schedule pool and add it to a specific position on their schedule
+* PUT user/"id"/pool/schedule
 * There are no required parameters for this feature
-* The body for this feature would contain the name of the class in the personal schedule pool and the position the client wants the class to be in their schedule
+* Body: JSON of course name, desiredPosition, credits, location, availabilityBitmap, daysMeet, courseDifficulty(isAP, isDualCredit), category
 * The status code would be "200 OK" if compiled properly
-* The response would be the updated schedule with the new class in the new position in their schedule
+* Response:none
+
+Should check whether course is already in desiredPosition
 
 ### QA 
 Expected Output: Course fits in schedule position
@@ -155,11 +158,24 @@ If there is a course already in that spot, replace it/swap positions
 When a class is added in the scheduler app, conflict warnings of any issues, if any, should be displayed. Clearly noticeable pop-up errors messages should be visible to the user. These messages should contain concise but crucial information to inform the user of any issues. Said issues include if a class is not available in a particular period, if a class is double blocked (back to back periods) and overlaps with another class, if consecutive classes have STEAM center and Allen High School campus time constraints, if the user selects privilege periods that conflict with already selected courses, and if dual credit courses become incompatible as they conform to a Monday/Wednesday/Friday schedule rather than an A/B block schedule. The warning should contain the the name of the class or classes that have a conflict, the period of the class(es), and the name of any other classes that have a corresponding conflict.
 
 ### Design
-* The HTTP method for this feature is GET with a filter to return conflict warnings based on the placement of courses in their personal schedule
-* The required parameter for this feature would be requesting to view conflicts instead of placing more classes 
-* There is no required body for invocation of this feature
+* GET user/"id"/pool/schedule/conflicts
+* Parameters: none
+* Body: none
 * The status code would be "200 OK" if compiled properly
-* The response would contain any potential errors or conflicts between course placement in a clients personal schedule
+* Response: JSON
+  {
+	  warnings: [
+		  {
+			  "firstPosition":Int
+			  "secondPosition":Int
+			  "description":String
+			  "warningType":Enum <- could be location, avaiability
+		  }
+		  {
+			  ......
+		  }
+      ]
+  }
 
 ### QA 
 Expected Output: Display a clear and concise warning/error message ONLY if there is a conflict in the schedule. The message should clearly describe the correct error.
@@ -173,11 +189,11 @@ Example: If user tries to schedule a high school class first period and steam cl
 A signup system should be available for new users. Either there will be a sign up system which utilzies username and passwords stored in a database to access a previously created schedule, or Google Sign In APIS are utilized. To signup a user will enter in a unique username,a password which must be 4 characters, and an email which links to their account. Each account created will be stored within the database, and measures must be made to prevent multiple users from being onthe same account at once. By creating a sign up for new users, users can access their schedules on any computer, and will be able to save changes on their schedule within the data base. In a perfect setting, this feature should utilize the linkage of already made google accounts for sign in. Google sign ins will simplify the account creation process for users, and allow for emails to be used for later features. At a minimum level, there some be some system in play which allows users to create an account via username and password, and this account stores their schedule data.
 
 ### Design
-* The HTTP method for this feature is a POST which will assign a key being the ID or email and a value of a password.
-* There is no required parameters for this feature.
-* The body for this would include the input of a new email and an input of a new password in order to create a key value pair of the two.
+* POST /users
+* Parameters: none
+* Body: JSON of user -> email, password, phoneNumber?, grade?
 * The status code would be "201 Created" when the pair is made.
-* The response would be a new functioning account that can be accesed by any computer and provide any saved schedules.
+* Response: none
 
 ### QA 
 * Keys should be easily replicable. 
