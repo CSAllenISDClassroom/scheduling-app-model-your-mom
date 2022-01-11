@@ -62,7 +62,7 @@ A search bar both at the top and the bottom of the page. The feature needs to at
 * Body: none
 * The status code would be "200 OK" if compiled properly
 * Response:
- {"courses": [
+ 1. {"courses": [
 	  {
 		"name":"Math I",
 		"semester":1,
@@ -70,7 +70,14 @@ A search bar both at the top and the bottom of the page. The feature needs to at
       }		
 	]
   }
-  
+  2. {"courses": [
+	  {
+		"name":"English IV",
+		"semester":2,
+		"period":6
+      }		
+	]
+  }
 ### QA 
 Expected Output: Program returns list of courses that match keywords
 If user inputs keywords that that don’t match any courses or property names, return “no courses match search, please try again”
