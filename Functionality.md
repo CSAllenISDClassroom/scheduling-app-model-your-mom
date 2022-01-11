@@ -414,6 +414,12 @@ Create a function that returns courses that could be added to a schedule, given 
 		{"courseID": 230498}		
 	]
 }
+{
+	"email": "jack-fiersen@student.allenisd.org
+	"validCourses": [
+		{"courseID": 431926}		
+	]
+}
 ```
 * The status code would be "200 OK"
 * There is no response necessary
