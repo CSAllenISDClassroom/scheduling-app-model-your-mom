@@ -38,6 +38,7 @@ A list of all courses should be available for all users to see. The list of all 
   {"courses": [
 	  {
 		"name":String,
+		"courseID:Int,
 		"semester":Int,
 		"period":Int
       }		
@@ -58,26 +59,23 @@ A search bar both at the top and the bottom of the page. The feature needs to at
 
 ### Design
 * GET /courses?query="math"
-* Parameters: {"query":String}
+* Parameters: query:String
 * Body: none
 * The status code would be "200 OK" if compiled properly
 * Response:
- 1. {"courses": [
+  {"courses": [
 	  {
 		"name":"Math I",
 		"semester":1,
 		"period":3
-      }		
-	]
-  }
-  2. {"courses": [
+      },
 	  {
 		"name":"English IV",
 		"semester":2,
 		"period":6
       }		
-	]
   }
+
 ### QA 
 Expected Output: Program returns list of courses that match keywords
 If user inputs keywords that that don’t match any courses or property names, return “no courses match search, please try again”
@@ -91,31 +89,29 @@ If user inputs keywords that that don’t match any courses or property names, r
 Each course would be assigned specific attributes, some being the level of the course (AP, Pre-AP, On Level, Dual Credit, and IB), whether the class is double blocked or single blocked, a semester only class or a full year class, a class requiring tryouts (soccer, basketball, etc.), a class requiring applications (wings, pals, etc.), the campus (Main campus, Steam campus, Technical Campus, Lowery). Near the search bar, a list of these attributes should be available, allowing users to tick the boxes of the attributes, specifically searching courses with those specific attributes. If a user inputs a series of attributes that do not match a course, they willbe redirected to an error message.
 
 ### Design
-* GET /courses?isAP=true&&...
-* Parameters: Any numbter of filters, including: classDifficulty, availability, isFullYear, isDoubleBlocked, location, etc.
-* Body:No body, all parameters in query string
+* GET /courses?isAP=true&...
+* Parameters: Any number of filters, including: classDifficulty, availability, isFullYear, isDoubleBlocked, location, etc.
+* Body: none
 * The status code would be "200 OK" if compiled properly
 * Response:
  {"courses": [
 	  {
 		"name":"Biology",
-		"semester":1,
+		"semester":1,	
 		"period":2,
 		"location":"AHS",
 		"classDifficulty:"AP"
-      }		
-	]
-  }
- {"courses": [
+      },
 	  {
 		"name":"Chemistry",
 		"semester":2,
 		"period":4,
 		"location":"LFC",
 		"classDifficulty:"Pre-AP"
-      }		
+      }			  
 	]
-  } 
+  }
+
 
 ### QA 
 Expected Output: Program returns list of courses that match attributes
@@ -131,22 +127,20 @@ If user inputs invalid attributes, return “no courses match search, please try
 All courses should be able to be selected and placed in a separate pool. If courses are double blocked, then when one course is selected, the other course will be automatically added to the course pool. Add parameters that demand that all courses should be added for both semesters,(the total # of courses in the pool should be even, otherwise send an error message).
 
 
-
 ### Design
-* PUT /user/"id"/pool
-* Parameter: none
-* Body: JSON of course names, semesters, categories, credits
+* POST /user/"id"/pool
+* Parameter: id:UUID/Int
+* Body: JSON of course/course's name:Int, id:Int, category:Enum, credits:Int
 * The status code would be "200 OK" if works
-* There would be no response for this feature
-* Errors: insufficient credits, not proper selection of core and elective courses
+* Response: none
+* Possible Errors: insufficient credits, missing core classes
 
 ### QA 
 Expected Output: Program has a add courses button respective to the personal schedule pool
 If the user adds invalid courses, return “Course does not exist” 
 
 
-
-## Put Courses in a Schedule and Into a Schedule Position
+## Put Course in a Schedule and Into a Schedule Position
 
 
 ### Functionality
@@ -155,12 +149,11 @@ When a course is selected, the possible periods it could be placed in should be 
 
 ### Design
 * PUT user/"id"/pool/schedule
-* There are no required parameters for this feature
-* Body: JSON of course name, desiredPosition, credits, location, availabilityBitmap, daysMeet, courseDifficulty(isAP, isDualCredit), category
+* Parameters: id:UUID/Int
+* Body: JSON of course name:Int, id:Int, position:Int
 * The status code would be "200 OK" if compiled properly
 * Response:none
-
-Should check whether course is already in desiredPosition
+* Error: If there is conflict at position or course already at position
 
 ### QA 
 Expected Output: Course fits in schedule position
@@ -186,7 +179,7 @@ When a class is added in the scheduler app, conflict warnings of any issues, if 
 			  "firstPosition":Int
 			  "secondPosition":Int
 			  "description":String
-			  "warningType":Enum <- could be location, avaiability
+			  "conflictType":Enum <- could be location, avaiability, etc. which could change the potential warning message
 		  }
 		  {
 			  ......
@@ -206,11 +199,13 @@ Example: If user tries to schedule a high school class first period and steam cl
 A signup system should be available for new users. Either there will be a sign up system which utilzies username and passwords stored in a database to access a previously created schedule, or Google Sign In APIS are utilized. To signup a user will enter in a unique username,a password which must be 4 characters, and an email which links to their account. Each account created will be stored within the database, and measures must be made to prevent multiple users from being onthe same account at once. By creating a sign up for new users, users can access their schedules on any computer, and will be able to save changes on their schedule within the data base. In a perfect setting, this feature should utilize the linkage of already made google accounts for sign in. Google sign ins will simplify the account creation process for users, and allow for emails to be used for later features. At a minimum level, there some be some system in play which allows users to create an account via username and password, and this account stores their schedule data.
 
 ### Design
+Creates new user
 * POST /users
 * Parameters: none
-* Body: JSON of user -> email, password, phoneNumber?, grade?
+* Body: JSON of user -> email:String, password:String, phoneNumber:String?, gradeLevel:Enum?
 * The status code would be "201 Created" when the pair is made.
 * Response: none
+* Possible Errors: Already user with associated email
 
 ### QA 
 * Keys should be easily replicable. 
