@@ -26,7 +26,7 @@ func routes(_ app: Application) throws {
     }
 
     // UNCOMMENT-DATABASE to configure database example
-    // // Find an employee with the specified ID
+    // Find an employee with the specified ID
     // app.get ("employees", ":id") { req -> Employee in
     //     guard let id = req.parameters.get("id", as: Int.self) else {
     //         throw Abort(.badRequest)
@@ -40,7 +40,7 @@ func routes(_ app: Application) throws {
     //     return employee
     // }
 
-    // // List all employees using paging
+    // // // List all employees using paging
     // app.get("employees") { req -> Page<Employee>  in
     //     let employees = try await Employee.query(on: req.db)
     //       .paginate(for: req)
