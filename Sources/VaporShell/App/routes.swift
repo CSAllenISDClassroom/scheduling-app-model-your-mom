@@ -16,15 +16,26 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 import Vapor
 
 // UNCOMMENT-DATABASE to configure database example
-// import Fluent
-// import FluentMySQLDriver
+import Fluent
+import FluentMySQLDriver
 
+let coursesController = CoursesController()
 func routes(_ app: Application) throws {
     
     app.get { req in
         return "It works!"
     }
 
+    try coursesController.getCourseByCode(app)
+
+
+    app.get("courses") { req -> Page<Course> in
+        let courses = try await Course.query(on: req.db)
+          .paginate(for: req)
+        return courses
+    }
+
+    
     // UNCOMMENT-DATABASE to configure database example
     // Find an employee with the specified ID
     // app.get ("employees", ":id") { req -> Employee in

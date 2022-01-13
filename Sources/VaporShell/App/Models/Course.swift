@@ -19,9 +19,9 @@ import FluentMySQLDriver
 
 // UNCOMMENT-DATABASE to configure database example
 // Content conformance will ensure that the object can be encoded and decoded from HTTP messages.
-final class Courses: Model, Content {
+final class Course: Model, Content {
     // Name of the table or collection.
-    static let schema = "Courses"
+    static let schema = "CourseSectionsView"
 
     // Unique identifier for this Employee.
     @ID(custom: "code", generatedBy: .database)
@@ -29,40 +29,40 @@ final class Courses: Model, Content {
 
     // Additional fields for this Employee.
     @Field(key: "description")
-    var firstName: String
+    var description: String?
 
     @Field(key: "semester")
-    var lastName: String
+    var semester: String?
 
-    @Field(key: "LocationName")
-    var gender: String
+    @Field(key: "locationName")
+    var locationName: String
 
     @Field(key: "gradesLow")
-    var birthDate: Int
+    var gradesLow: Int?
 
     @Field(key: "gradesHigh")
-    var hireDate: Int
+    var gradesHigh: Int?
 
     @Field(key: "isApplication")
-    var hireDate: Int
+    var isApplication: Int
 
     @Field(key: "isOnLevel")
-    var hireDate: Int
+    var isOnLevel: Int
     
     @Field(key: "isPreAp")
-    var hireDate: Int
+    var isPreAp: Int
     
     @Field(key: "isAp")
-    var hireDate: Int
+    var isAp: Int
 
     @Field(key: "isIB")
-    var hireDate: Int
+    var isIB: Int
 
     @Field(key: "isDualCredit")
-    var hireDate: Int
+    var isDualCredit: Int
 
-    @Field(key: "availibilityBitmap")
-    var hireDate: Int
+    @Field(key: "availabilityBitmap")
+    var availabilityBitmap: Int
 
     // Creates a new, empty Employee.
     init() { }
