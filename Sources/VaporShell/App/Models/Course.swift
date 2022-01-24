@@ -20,7 +20,9 @@ import FluentMySQLDriver
 import Foundation
 
 // UNCOMMENT-DATABASE to configure database example
-// Content conformance will ensure that the object can be encoded and decoded from HTTP messages.
+
+
+// Create Course Levels to convert data into a string
 enum CourseLevel: String, Codable{
     case onLevel
     case preAP
@@ -29,6 +31,10 @@ enum CourseLevel: String, Codable{
     case dualCredit
 }
 
+/*
+ Struct Course which is type content to ensure object can be encoded and decoded from HTTP messages
+ This struct will be converted to JSON when CourseData is mapped
+ */
 struct Course: Content{
     let code:String?
     let description:String?
@@ -36,6 +42,7 @@ struct Course: Content{
     let locationName: String
     let isApplication: Bool    
     let courseLevel: CourseLevel
+    // Availability periods is in a 2d Array to accomodate double blocked periods
     var availabilityPeriods: [[Int]]
     
     init(_ courseData:CourseData) throws{        
@@ -48,6 +55,8 @@ struct Course: Content{
         availabilityPeriods = Course.availabilityPeriods(bitmap:courseData.availabilityBitmap)                
     }
 
+
+    // Convert CourseData Courselevel values to human understandable strings
     private static func toCourseLevel(courseData:CourseData) -> CourseLevel{
         if courseData.isOnLevel == 1{
             return .onLevel
@@ -75,6 +84,8 @@ struct Course: Content{
         return semesterInteger
     }
 
+    // convert bitmap to integers in a 2d array
+    
     private static func availabilityPeriods(bitmap: Int) -> [[Int]] {
         // Begin with an empty array
         var periods = [[Int]]()
@@ -96,7 +107,7 @@ struct Course: Content{
             }
         }
 
-        // Double-blocked Vertical: 21 ... 23 bits
+        // Double-blocked Horizontal: 21 ... 23 bits
         // Represents period pairs: 2/5, 3/6, 4/7
         for bit in 21 ... 23{
             if bitmap & (1 << bit) != 0{
@@ -108,6 +119,12 @@ struct Course: Content{
         return periods
     }
 }
+
+
+
+/*
+ CourseData Class conforms to Model Type inorder to read a schema, and create fields to get data from the AHSSchedule Database
+ */
 
 final class CourseData: Model {
     // Name of the table or collection.
