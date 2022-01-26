@@ -128,10 +128,10 @@ struct Course: Content{
 
 final class CourseData: Model {
     // Name of the table or collection.
-    static let schema = "CourseSectionsView"
+    static let schema = "Courses"
 
     // Unique identifier for this Course.
-    @ID(custom: "code", generatedBy: .database)
+    @ID(custom: "courseCode", generatedBy: .database)
     var id: String?
 
     // Additional fields for this Course.
