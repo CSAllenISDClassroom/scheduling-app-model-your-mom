@@ -36,14 +36,14 @@ enum CourseLevel: String, Codable{
  This struct will be converted to JSON when CourseData is mapped
  */
 struct Course: Content{
-    let code:String?
-    let description:String?
-    var semester:Int?
-    let locationName: String
-    let isApplication: Bool    
-    let courseLevel: CourseLevel
+    let code : String?
+    let description : String?
+    var semester : Int?
+    let locationName : String
+    let isApplication : Bool    
+    let courseLevel : CourseLevel
     // Availability periods is in a 2d Array to accomodate double blocked periods
-    var availabilityPeriods: [[Int]]
+    var availabilityPeriods : [[Int]]
     
     init(_ courseData:CourseData) throws{        
         code = courseData.id
@@ -92,7 +92,7 @@ struct Course: Content{
 
         // Single Period: 0 ... 10 bits
         for bit in 0 ... 10 {
-            if bitmap & (1 << bit) != 0{
+            if bitmap & (1 << bit) != 0 {
                 let period = bit
                 periods.append([period])
             }
@@ -101,7 +101,7 @@ struct Course: Content{
         // Double-blocked Vertical: 11 ... 20 bits
         // Represents period pairs: 0/1, 1/2, 2/3, etc.
         for bit in 11  ... 20 {
-            if bitmap & (1 << bit) != 0{
+            if bitmap & (1 << bit) != 0 {
                 let firstPeriod = bit - 11, secondPeriod = firstPeriod + 1
                 periods.append([firstPeriod, secondPeriod])
             }
@@ -110,7 +110,7 @@ struct Course: Content{
         // Double-blocked Horizontal: 21 ... 23 bits
         // Represents period pairs: 2/5, 3/6, 4/7
         for bit in 21 ... 23{
-            if bitmap & (1 << bit) != 0{
+            if bitmap & (1 << bit) != 0 {
                 let firstPeriod = bit - 19, secondPeriod = firstPeriod + 3
                 periods.append([firstPeriod, secondPeriod])
             }            
@@ -131,45 +131,45 @@ final class CourseData: Model {
     static let schema = "Courses"
 
     // Unique identifier for this Course.
-    @ID(custom: "courseCode", generatedBy: .database)
-    var id: String?
+    @ID(custom: "code", generatedBy: .database)
+    var id : String?
 
     // Additional fields for this Course.
     @Field(key: "description")
-    var description: String?
+    var description : String?
 
     @Field(key: "semester")
-    var semester: String?
+    var semester : String?
 
     @Field(key: "locationName")
-    var locationName: String
+    var locationName : String
 
     @Field(key: "gradesLow")
-    var gradesLow: Int?
+    var gradesLow : Int?
 
     @Field(key: "gradesHigh")
-    var gradesHigh: Int?
+    var gradesHigh : Int?
 
     @Field(key: "isApplication")
-    var isApplication: Int
+    var isApplication : Int
 
     @Field(key: "availabilityBitmap")
-    var availabilityBitmap: Int
+    var availabilityBitmap : Int
 
     @Field(key: "isOnLevel")
-    var isOnLevel: Int
+    var isOnLevel : Int
     
     @Field(key: "isPreAP")
-    var isPreAP: Int
+    var isPreAP : Int
     
     @Field(key: "isAP")
-    var isAP: Int
+    var isAP : Int
 
     @Field(key: "isIB")
-    var isIB: Int
+    var isIB : Int
 
     @Field(key: "isDualCredit")
-    var isDualCredit: Int
+    var isDualCredit : Int
     
     // Creates a new, empty Employee.
     init() { }
