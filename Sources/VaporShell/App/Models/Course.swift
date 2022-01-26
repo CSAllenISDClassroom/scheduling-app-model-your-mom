@@ -131,7 +131,7 @@ final class CourseData: Model {
     static let schema = "Courses"
 
     // Unique identifier for this Course.
-    @ID(custom: "code", generatedBy: .database)
+    @ID(custom: "code")
     var id : String?
 
     // Additional fields for this Course.
