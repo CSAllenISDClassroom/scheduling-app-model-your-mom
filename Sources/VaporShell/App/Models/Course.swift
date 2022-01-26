@@ -40,18 +40,23 @@ struct Course: Content{
     let description : String?
     var semester : Int?
     let locationName : String
-    let isApplication : Bool    
-    let courseLevel : CourseLevel
+    let semesterLength : String?
+    let dualCreditDailySchedule : String?
+//    let isApplication : Bool    
+//    let courseLevel : CourseLevel
     // Availability periods is in a 2d Array to accomodate double blocked periods
     var availabilityPeriods : [[Int]]
     
     init(_ courseData:CourseData) throws{        
         code = courseData.id
         description = courseData.description
-        semester = try Course.semesterAsInteger(semester:courseData.semester!)
+        //        semester = try Course.semesterAsInteger(semester:courseData.semester!)
+        semester = Int(courseData.semester)
         locationName = courseData.locationName
-        isApplication = courseData.isApplication == 1 ? true : false               
-        courseLevel = Course.toCourseLevel(courseData:courseData)
+        semesterLength = courseData.semesterLength
+//        isApplication = courseData.isApplication == 1 ? true : false               
+//        courseLevel = Course.toCourseLevel(courseData:courseData)
+        dualCreditDailyScheudle = courseData.dualCreditDailySchedule
         availabilityPeriods = Course.availabilityPeriods(bitmap:courseData.availabilityBitmap)                
     }
 
@@ -138,26 +143,29 @@ final class CourseData: Model {
     @Field(key: "description")
     var description : String?
 
+    @Field(key: "semesterLength")
+    var semesterLength : String?
+
     @Field(key: "semester")
     var semester : String?
 
-    @Field(key: "locationName")
+    @Field(key: "location")
     var locationName : String
 
-    @Field(key: "gradesLow")
-    var gradesLow : Int?
+    @Field(key: "dualCreditDailySchedule")
+    var dualCreditDailySchedule : String?
+    
+/*    @Field(key: "gradesHigh")
+    var gradesHigh : Int? */
 
-    @Field(key: "gradesHigh")
-    var gradesHigh : Int?
+/*    @Field(key: "isApplication")
+    var isApplication : Int */
 
-    @Field(key: "isApplication")
-    var isApplication : Int
-
-    @Field(key: "availabilityBitmap")
+    @Field(key: "periodBitmap")
     var availabilityBitmap : Int
 
-    @Field(key: "isOnLevel")
-    var isOnLevel : Int
+/*    @Field(key: "isOnLevel")
+    var isOnLevel : Int 
     
     @Field(key: "isPreAP")
     var isPreAP : Int
@@ -170,6 +178,8 @@ final class CourseData: Model {
 
     @Field(key: "isDualCredit")
     var isDualCredit : Int
+    
+ */
     
     // Creates a new, empty Employee.
     init() { }
