@@ -36,45 +36,40 @@ enum CourseLevel: String, Codable{
  This struct will be converted to JSON when CourseData is mapped
  */
 struct Course: Content{
-    let code : String?
+    let courseCode : String?
+    let shortDescription : String?
     let description : String?
     var semester : Int?
-    let locationName : String
+    let location : String?
     let semesterLength : String?
     let dualCreditDailySchedule : String?
+    let level : String?
 //    let isApplication : Bool    
 //    let courseLevel : CourseLevel
     // Availability periods is in a 2d Array to accomodate double blocked periods
     var availabilityPeriods : [[Int]]
     
     init(_ courseData:CourseData) throws{        
-        code = courseData.id
+        courseCode = courseData.id 
         description = courseData.description
         //        semester = try Course.semesterAsInteger(semester:courseData.semester!)
-        semester = Int(courseData.semester)
-        locationName = courseData.locationName
+        semester = courseData.semester 
+        location = courseData.location 
         semesterLength = courseData.semesterLength
+        shortDescription = courseData.shortDescription 
 //        isApplication = courseData.isApplication == 1 ? true : false               
 //        courseLevel = Course.toCourseLevel(courseData:courseData)
-        dualCreditDailyScheudle = courseData.dualCreditDailySchedule
-        availabilityPeriods = Course.availabilityPeriods(bitmap:courseData.availabilityBitmap)                
+        level = courseData.level
+        dualCreditDailySchedule = courseData.dualCreditDailySchedule
+        if let bitmap = courseData.periodBitmap{
+            availabilityPeriods = Course.availabilityPeriods(bitmap:bitmap)
+        } else {
+            throw Abort(.badRequest)
+        }
     }
 
 
     // Convert CourseData Courselevel values to human understandable strings
-    private static func toCourseLevel(courseData:CourseData) -> CourseLevel{
-        if courseData.isOnLevel == 1{
-            return .onLevel
-        } else if courseData.isPreAP == 1{
-            return .preAP
-        } else if courseData.isDualCredit == 1{
-            return .dualCredit
-        } else if courseData.isAP == 1{
-            return .AP
-        } else {
-            return .IB
-        }
-    }
     
     private static func semesterAsInteger(semester:String) throws -> Int {
         guard semester.count == 2,
@@ -136,22 +131,24 @@ final class CourseData: Model {
     static let schema = "Courses"
 
     // Unique identifier for this Course.
-    @ID(custom: "code")
+    @ID(custom: "courseCode")
     var id : String?
-
-    // Additional fields for this Course.
-    @Field(key: "description")
-    var description : String?
 
     @Field(key: "semesterLength")
     var semesterLength : String?
 
     @Field(key: "semester")
-    var semester : String?
+    var semester : Int?
 
+    @Field(key: "shortDescription")
+    var shortDescription : String?
+
+    @Field(key: "description")
+    var description : String?  
+    
     @Field(key: "location")
-    var locationName : String
-
+    var location : String?
+    
     @Field(key: "dualCreditDailySchedule")
     var dualCreditDailySchedule : String?
     
@@ -162,7 +159,10 @@ final class CourseData: Model {
     var isApplication : Int */
 
     @Field(key: "periodBitmap")
-    var availabilityBitmap : Int
+    var periodBitmap : Int?
+
+    @Field(key: "level")
+    var level: String?
 
 /*    @Field(key: "isOnLevel")
     var isOnLevel : Int 
