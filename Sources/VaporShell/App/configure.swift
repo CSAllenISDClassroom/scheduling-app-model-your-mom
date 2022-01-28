@@ -28,11 +28,11 @@ public func configure(_ app: Application) throws {
     var tls = TLSConfiguration.makeClientConfiguration()
     tls.certificateVerification = .none
     app.databases.use(.mysql(
-                        hostname: "db",
+                        hostname: Environment.get("AHSSchedule_DB_HOSTNAME"),
                         port: MySQLConfiguration.ianaPortNumber,
-                        username: "AHSSchedule",
-                        password: ",dpf4>/B{v56x6/=",
-                        database: "AHSSchedule",
+                        username: Environment.get("AHSSchedule_DB_USERNAME"),
+                        password: Environment.get("AHSSchedule_DB_PASSWORD"),
+                        database: Environment.get("AHSSchedule_DB_NAME"),
                         tlsConfiguration: tls
                       ), as: .mysql)
 
