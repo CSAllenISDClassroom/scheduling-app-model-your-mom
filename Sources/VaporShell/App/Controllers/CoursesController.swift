@@ -27,15 +27,7 @@ public class CoursesController {
                 throw Abort(.notFound)
             }
 
-            let course: Course
-            
-            do{
-                course = try Course(courseData)                
-            } catch let error as Abort{
-                throw error
-            }
-
-            return course
+            return try Course(courseData)
         }
     }
 
