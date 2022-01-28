@@ -51,16 +51,16 @@ struct Course: Content{
         code = courseData.id
         description = courseData.description
         //        semester = try Course.semesterAsInteger(semester:courseData.semester!)
-        semester = Int(courseData.semester)
+        semester = Int(courseData.semester!)
         locationName = courseData.locationName
         semesterLength = courseData.semesterLength
 //        isApplication = courseData.isApplication == 1 ? true : false               
 //        courseLevel = Course.toCourseLevel(courseData:courseData)
-        dualCreditDailyScheudle = courseData.dualCreditDailySchedule
+        dualCreditDailySchedule = courseData.dualCreditDailySchedule
         availabilityPeriods = Course.availabilityPeriods(bitmap:courseData.availabilityBitmap)                
     }
 
-
+/*
     // Convert CourseData Courselevel values to human understandable strings
     private static func toCourseLevel(courseData:CourseData) -> CourseLevel{
         if courseData.isOnLevel == 1{
@@ -75,6 +75,7 @@ struct Course: Content{
             return .IB
         }
     }
+    */
     
     private static func semesterAsInteger(semester:String) throws -> Int {
         guard semester.count == 2,
