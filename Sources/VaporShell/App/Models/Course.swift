@@ -70,6 +70,8 @@ struct Course: Content{
 
 
     // Convert CourseData Courselevel values to human understandable strings
+
+
     
     private static func semesterAsInteger(semester:String) throws -> Int {
         guard semester.count == 2,
