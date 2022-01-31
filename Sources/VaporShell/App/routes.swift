@@ -23,7 +23,7 @@ let coursesController = CoursesController()
 func routes(_ app: Application) throws {
     
     app.get { req in
-        return "It works!"
+        return "poggers! daniel is hot"
     }
 
     try coursesController.getCourseByCode(app)
