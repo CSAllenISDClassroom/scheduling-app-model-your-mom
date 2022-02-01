@@ -77,16 +77,20 @@ public class CoursesController {
 
     }
 
-    // private func filterBySemester(courses:inout Page<Course>, semester:Int) -> Page<Course>{
-        
-    // }
+    public func getCategories(_ app: Application) throws {
+        app.get("categories") { req -> [Category] in
+            let categoryData = try await Category.query(on: req.db).all()
+            return categoryData
+        }
+    }
 
-    // private func filterByLocation(courses:inout Page<Course>, location:Int) -> Page<Course>{
-        
-    // }
-
-    // private func filterByLevel(courses:inout Page<Course>, level:Int) -> Page<Course>{
-        
-    // }
+    public func getSubcategories(_ app: Application) throws {
+        app.get("subcategories") { req -> [Subcategory] in
+            let subcategoryData = try await Subcategory.query(on: req.db).all()
+            return subcategoryData
+        }
+    }
 
 }
+
+

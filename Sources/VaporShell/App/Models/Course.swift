@@ -25,13 +25,17 @@ import Foundation
  */
 struct Course: Content{
     let courseCode : String?
-    let shortDescription : String?
     let description : String?
     var semester : Int?
     let location : String?
     let semesterLength : String?
     let dualCreditDailySchedule : String?
     let level : String?
+    let categories : String?
+    let subcategories : String?
+    
+//    let isApplication : Bool    
+//    let courseLevel : CourseLevel
 
     // Availability periods is in a 2d Array to accomodate double blocked periods
     var availabilityPeriods : [[Int]]
@@ -42,7 +46,10 @@ struct Course: Content{
         semester = courseData.semester 
         location = courseData.location 
         semesterLength = courseData.semesterLength
-        shortDescription = courseData.shortDescription 
+//        isApplication = courseData.isApplication == 1 ? true : false               
+//        courseLevel = Course.toCourseLevel(courseData:courseData)
+        categories = courseData.categories
+        subcategories = courseData.subcategories
         level = courseData.level
         dualCreditDailySchedule = courseData.dualCreditDailySchedule
 

@@ -20,9 +20,6 @@ final class CourseData: Model {
     @Field(key: "semester")
     var semester : Int?
 
-    @Field(key: "shortDescription")
-    var shortDescription : String?
-
     @Field(key: "description")
     var description : String?  
     
@@ -44,6 +41,12 @@ final class CourseData: Model {
     @Field(key: "level")
     var level: String?
 
+    @Field(key: "categories")
+    var categories : String?
+
+    @Field(key: "subcategories")
+    var subcategories: String?
+    
 /*    @Field(key: "isOnLevel")
     var isOnLevel : Int 
     
