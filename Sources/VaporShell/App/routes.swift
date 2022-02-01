@@ -29,4 +29,6 @@ func routes(_ app: Application) throws {
     try coursesController.getCourseByCode(app)
 
     try coursesController.getPaginatedCourses(app)    
+
+    try coursesController.getCategories(app)
 }

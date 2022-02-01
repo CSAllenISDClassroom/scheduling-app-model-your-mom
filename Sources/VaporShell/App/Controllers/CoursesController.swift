@@ -53,5 +53,14 @@ public class CoursesController {
 
     }
 
+
+    public func getCategories(_ app: Application) throws {
+        app.get("categories") { req -> [Category] in
+            let categoryData = try await Category.query(on: req.db).all()
+            return categoryData
+        }
+    }
     
 }
+
+
