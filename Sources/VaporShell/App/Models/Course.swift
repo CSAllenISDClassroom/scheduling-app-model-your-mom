@@ -32,8 +32,6 @@ struct Course: Content{
     let semesterLength : String?
     let dualCreditDailySchedule : String?
     let level : String?
-//    let isApplication : Bool    
-//    let courseLevel : CourseLevel
 
     // Availability periods is in a 2d Array to accomodate double blocked periods
     var availabilityPeriods : [[Int]]
@@ -41,38 +39,23 @@ struct Course: Content{
     init(_ courseData:CourseData) throws{        
         courseCode = courseData.id 
         description = courseData.description
-        //        semester = try Course.semesterAsInteger(semester:courseData.semester!)
         semester = courseData.semester 
         location = courseData.location 
         semesterLength = courseData.semesterLength
         shortDescription = courseData.shortDescription 
-//        isApplication = courseData.isApplication == 1 ? true : false               
-//        courseLevel = Course.toCourseLevel(courseData:courseData)
         level = courseData.level
         dualCreditDailySchedule = courseData.dualCreditDailySchedule
+
         if let bitmap = courseData.periodBitmap{
             availabilityPeriods = Course.availabilityPeriods(bitmap:bitmap)
         } else {
-            throw Abort(.badRequest)
+            throw Abort(.internalServerError)
         }
     }
 
-
-    // Convert CourseData Courselevel values to human understandable strings
-
-
-    
-    private static func semesterAsInteger(semester:String) throws -> Int {
-        guard semester.count == 2,
-              semester.first == "S" else{
-            throw Abort(.badRequest, reason:"Invalid semester input, S must be first character")
-        }
-        
-        guard let semesterInteger = Int(String(semester.last!)) else {
-            throw Abort(.badRequest, reason: "Invalid semester input, second char must be int")
-        }
-
-        return semesterInteger
+    subscript(key: String) -> Any? {
+        let mirror = Mirror(reflecting: self)
+        return mirror.children.first(where: {$0.label == key})?.value
     }
 
     // convert bitmap to integers in a 2d array
@@ -109,6 +92,7 @@ struct Course: Content{
 
         return periods
     }
+    
 }
 
 

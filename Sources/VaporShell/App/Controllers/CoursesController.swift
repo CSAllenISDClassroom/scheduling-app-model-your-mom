@@ -35,23 +35,58 @@ public class CoursesController {
     ///
     /// * API Endpoint: /courses
     /// * Method: Get
-    /// * Query parameters: None
+    /// * Query parameters: Optional(Course attributes)
     /// * Status codes:
     ///   * 200 Successful
     ///
     /// Returns ``Courses``    
     public func getPaginatedCourses(_ app: Application) throws{
-        app.get("courses") { req -> Page<Course> in       
-            let coursesData = try await CourseData.query(on: req.db)
-              .paginate(for: req)
+        app.get("courses") { req -> Page<CourseData> in                                                      
+            var coursesData = CourseData.query(on: req.db).filter(\.$semester == 1)
+            print(type(of:coursesData))
+            // var filters: [String:Any]
             
-            let courses = try coursesData.map({
-                                                  try Course($0)
-                                              })
-            return courses 
+            // if let semester: Int = req.query["semester"]{
+            //     guard (semester == 1) || (semester == 2) else{
+            //         throw Abort(.badRequest, reason:"Invalid semester")
+            //     }
+
+            //     filters["semester"] = semester
+            // }
+            
+            // if let location: String = req.query["location"]{
+            //     guard (location == "AHS") || (location == "STEAM") || (location == "LFC") || (location == "CTC") else{
+            //         throw Abort(.badRequest, reason:"Invalid location")
+            //     }
+
+            //     filters["location"] = location
+            // }
+            
+            // if let level: String = req.query["level"]{
+            //     guard level.count == 26 else{
+            //         throw Abort(.badRequest, reason:"Invalid level")
+            //     }
+
+            //     filters["level"] = level
+            // }                                  
+
+            // QueryBuilder<CourseData>           
+            
+            return try await coursesData.paginate(for:req)
         }
 
     }
 
-    
+    // private func filterBySemester(courses:inout Page<Course>, semester:Int) -> Page<Course>{
+        
+    // }
+
+    // private func filterByLocation(courses:inout Page<Course>, location:Int) -> Page<Course>{
+        
+    // }
+
+    // private func filterByLevel(courses:inout Page<Course>, level:Int) -> Page<Course>{
+        
+    // }
+
 }
