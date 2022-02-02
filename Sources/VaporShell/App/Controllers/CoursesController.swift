@@ -42,41 +42,38 @@ public class CoursesController {
     /// Returns ``Courses``    
     public func getPaginatedCourses(_ app: Application) throws{
         app.get("courses") { req -> Page<CourseData> in                                                      
-            var coursesData = CourseData.query(on: req.db).filter(\.$semester == 1)
-            print(type(of:coursesData))
-            // var filters: [String:Any]
+            var coursesData = CourseData.query(on: req.db)            
+                       
+            if let semester: Int = req.query["semester"]{
+                guard (semester == 1) || (semester == 2) else{
+                    throw Abort(.badRequest, reason:"Invalid semester")
+                }
+                coursesData.filter(\.$semester == semester)
+            }
             
-            // if let semester: Int = req.query["semester"]{
-            //     guard (semester == 1) || (semester == 2) else{
-            //         throw Abort(.badRequest, reason:"Invalid semester")
-            //     }
-
-            //     filters["semester"] = semester
-            // }
+            if let location: String = req.query["location"]{
+                guard (location == "AHS") || (location == "STEAM") || (location == "LFC") || (location == "CTC") else{
+                    throw Abort(.badRequest, reason:"Invalid location")
+                }
+                print(location)
+                coursesData.filter(\.$location == location)
+            }
             
-            // if let location: String = req.query["location"]{
-            //     guard (location == "AHS") || (location == "STEAM") || (location == "LFC") || (location == "CTC") else{
-            //         throw Abort(.badRequest, reason:"Invalid location")
-            //     }
+            if let level: String = req.query["level"]{
+                guard level.count <= 26 else{
+                    throw Abort(.badRequest, reason:"Invalid level")
+                }
+                print(level)
+                coursesData.filter(\.$level == level)
+            }                                  
 
-            //     filters["location"] = location
-            // }
-            
-            // if let level: String = req.query["level"]{
-            //     guard level.count == 26 else{
-            //         throw Abort(.badRequest, reason:"Invalid level")
-            //     }
-
-            //     filters["level"] = level
-            // }                                  
-
-            // QueryBuilder<CourseData>           
             
             return try await coursesData.paginate(for:req)
         }
 
     }
 
+    
     public func getCategories(_ app: Application) throws {
         app.get("categories") { req -> [Category] in
             let categoryData = try await Category.query(on: req.db).all()
