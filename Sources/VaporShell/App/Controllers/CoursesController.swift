@@ -2,7 +2,6 @@ import Vapor
 import Fluent
 import FluentMySQLDriver
 
-
 public class CoursesController {
     /// Retrieves Courses based on code
     ///
@@ -27,7 +26,7 @@ public class CoursesController {
                 throw Abort(.notFound)
             }
 
-            return try Course(courseData)
+            return Course(courseData)
         }
     }
 
@@ -41,38 +40,92 @@ public class CoursesController {
     ///
     /// Returns ``Courses``    
     public func getPaginatedCourses(_ app: Application) throws{
-        app.get("courses") { req -> Page<CourseData> in                                                      
-            var coursesData = CourseData.query(on: req.db)            
+        app.get("courses") { req -> Page<Course> in                                           
+            let coursesData = CourseData.query(on: req.db)        //QueryBuilder<CourseData>
                        
-            if let semester: Int = req.query["semester"]{
+            if let semester: Int = try? req.query.get(Int.self, at:"semester"){
                 guard (semester == 1) || (semester == 2) else{
                     throw Abort(.badRequest, reason:"Invalid semester")
                 }
                 coursesData.filter(\.$semester == semester)
             }
             
-            if let location: String = req.query["location"]{
+            if let location: String = try? req.query.get(String.self, at:"location"){
                 guard (location == "AHS") || (location == "STEAM") || (location == "LFC") || (location == "CTC") else{
                     throw Abort(.badRequest, reason:"Invalid location")
                 }
-                print(location)
                 coursesData.filter(\.$location == location)
             }
             
-            if let level: String = req.query["level"]{
+            if let level: String = try? req.query.get(String.self, at:"level"){
                 guard level.count <= 26 else{
                     throw Abort(.badRequest, reason:"Invalid level")
                 }
-                print(level)
                 coursesData.filter(\.$level == level)
             }                                  
 
+            func stringToPeriods(string:String) throws -> [[Int]]{
+                let periodStrings = string.components(separatedBy:",")
+
+                return try periodStrings.map{periodString -> [Int] in
+                    if periodString.count <= 2,
+                       let period: Int = Int(periodString),
+                       period < 11{                        
+                        return [period]
+                    
+                    } else if periodString.count <= 4 && periodString.count >= 3,
+                              let firstPeriod: Int = Int(periodString.components(separatedBy:"-")[0]),
+                              let lastPeriod: Int = Int(periodString.components(separatedBy:"-")[1]),
+                              firstPeriod <= 9, lastPeriod <= 10,
+                              (lastPeriod - firstPeriod) == 1 || (lastPeriod - firstPeriod) == 3{
+                        return [firstPeriod, lastPeriod]
+
+                    } else {
+                        throw Abort(.badRequest, reason: "Invalid string input for periods; Correct Ex: \"1,2,3,4,5,4-7\"; Make sure there are no spaces and double blocked periods have a '-' in between and periods are valid numbers " )
+                    }
+            }
+            }
             
-            return try await coursesData.paginate(for:req)
+            if let periodsString: String = try? req.query.get(String.self, at:"periods"){ // 2, 3, 4, 5-6
+
+                let periods: [[Int]] = try stringToPeriods(string:periodsString)
+                   
+                // [[2], [3]]
+                guard periods.count < 70,
+                      periods.joined().filter( {$0 > 10 && $0 < 0} ).isEmpty else{
+                    throw Abort(.badRequest, reason:"Invalid data in periods")
+                }
+                                
+                var courses = try await coursesData.all().map{Course($0)} //[Course]
+                
+                for periodArray in periods {
+                    courses = courses.filter{ 
+                        if let availabilityPeriods = $0.availabilityPeriods{
+                            return availabilityPeriods.contains(periodArray)
+                        }
+                        return false
+                    }
+                }
+                
+                let bitmaps = courses.map{ course -> Int in                    
+                    return Course.toBitmap(periods:course.availabilityPeriods!)
+                }
+                
+                print(periods)                            
+                coursesData.filter(\.$periodBitmap ~~ bitmaps)
+            }
+            
+            // if isQuery{
+            //     return try await coursesData.paginate(for:req).map{Course($0)}
+            // } else {
+            //     return try await coursesData.all().map{Course($0)}
+            // }
+            
+            return try await coursesData.paginate(for:req).map{Course($0)}
+            
         }
 
     }
-
     
     public func getCategories(_ app: Application) throws {
         app.get("categories") { req -> [Category] in

@@ -17,30 +17,31 @@ import Vapor
 
 import Foundation
 
+
 // UNCOMMENT-DATABASE to configure database example
 
 /*
  Struct Course which is type content to ensure object can be encoded and decoded from HTTP messages
  This struct will be converted to JSON when CourseData is mapped
  */
-struct Course: Content{
-    let courseCode : String?
-    let description : String?
-    var semester : Int?
-    let location : String?
-    let semesterLength : String?
-    let dualCreditDailySchedule : String?
-    let level : String?
-    let categories : String?
-    let subcategories : String?
+struct Course: Content, Hashable{
+    public let courseCode : String?
+    public let description : String?
+    public let semester : Int?
+    public let location : String?
+    public let semesterLength : String?
+    public let dualCreditDailySchedule : String?
+    public let level : String?
+    public let categories : String?
+    public let subcategories : String?
     
 //    let isApplication : Bool    
 //    let courseLevel : CourseLevel
 
     // Availability periods is in a 2d Array to accomodate double blocked periods
-    var availabilityPeriods : [[Int]]
+    public private(set) var availabilityPeriods : [[Int]]?
     
-    init(_ courseData:CourseData) throws{        
+    init(_ courseData:CourseData) {        
         courseCode = courseData.id 
         description = courseData.description
         semester = courseData.semester 
@@ -51,23 +52,18 @@ struct Course: Content{
         categories = courseData.categories
         subcategories = courseData.subcategories
         level = courseData.level
-        dualCreditDailySchedule = courseData.dualCreditDailySchedule
-
-        if let bitmap = courseData.periodBitmap{
-            availabilityPeriods = Course.availabilityPeriods(bitmap:bitmap)
-        } else {
-            throw Abort(.internalServerError)
-        }
+        dualCreditDailySchedule = courseData.dualCreditDailySchedule        
+        availabilityPeriods = courseData.periodBitmap != nil ? Course.toAvailabilityPeriods(bitmap: courseData.periodBitmap!) : nil        
     }
 
     subscript(key: String) -> Any? {
         let mirror = Mirror(reflecting: self)
         return mirror.children.first(where: {$0.label == key})?.value
     }
-
+    
     // convert bitmap to integers in a 2d array
     
-    private static func availabilityPeriods(bitmap: Int) -> [[Int]] {
+    public static func toAvailabilityPeriods(bitmap: Int) -> [[Int]] {
         // Begin with an empty array
         var periods = [[Int]]()
 
@@ -99,7 +95,26 @@ struct Course: Content{
 
         return periods
     }
-    
+
+    public static func toBitmap(periods:[[Int]]) -> Int {
+        var bitmap = 0
+
+        for periodArray in periods{
+            if periodArray.count == 1{
+                bitmap += 1 << periodArray[0]
+            } else if let last = periodArray.last,
+                      let first = periodArray.first,
+                      first + 1 == last{
+                bitmap += 1 << first + 11 
+            } else if let last = periodArray.last,
+                      let first = periodArray.first,
+                      first + 3 == last{
+                bitmap += 1 << first + 19
+            } 
+        }
+
+        return bitmap
+    }    
 }
 
 
