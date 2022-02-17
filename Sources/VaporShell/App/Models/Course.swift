@@ -101,18 +101,18 @@ struct Course: Content, Hashable{
 
         for periodArray in periods{
             if periodArray.count == 1{
-                bitmap += 1 << periodArray[0]
-            } else if let last = periodArray.last,
+                bitmap += (1 << periodArray[0])
+            } else if let last = periodArray.last, // [0, 1] -> 2^11
                       let first = periodArray.first,
                       first + 1 == last{
-                bitmap += 1 << first + 11 
+                bitmap += (1 << (11 + first))
             } else if let last = periodArray.last,
                       let first = periodArray.first,
                       first + 3 == last{
-                bitmap += 1 << first + 19
+                bitmap += (1 << (19 + first))
             } 
         }
-
+        
         return bitmap
     }    
 }

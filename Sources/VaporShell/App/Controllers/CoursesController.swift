@@ -95,12 +95,12 @@ public class CoursesController {
                       periods.joined().filter( {$0 > 10 && $0 < 0} ).isEmpty else{
                     throw Abort(.badRequest, reason:"Invalid data in periods")
                 }
-                                
+                
                 var courses = try await coursesData.all().map{Course($0)} //[Course]
                 
                 for periodArray in periods {
                     courses = courses.filter{ 
-                        if let availabilityPeriods = $0.availabilityPeriods{
+                        if let availabilityPeriods = $0.availabilityPeriods{                                       
                             return availabilityPeriods.contains(periodArray)
                         }
                         return false
@@ -110,17 +110,10 @@ public class CoursesController {
                 let bitmaps = courses.map{ course -> Int in                    
                     return Course.toBitmap(periods:course.availabilityPeriods!)
                 }
-                
-                print(periods)                            
+                                
                 coursesData.filter(\.$periodBitmap ~~ bitmaps)
             }
-            
-            // if isQuery{
-            //     return try await coursesData.paginate(for:req).map{Course($0)}
-            // } else {
-            //     return try await coursesData.all().map{Course($0)}
-            // }
-            
+                        
             return try await coursesData.paginate(for:req).map{Course($0)}
             
         }
