@@ -15,18 +15,12 @@ public class CoursesController {
     ///
     /// Returns ``Course``
     public func getCourseByCode(_ app: Application) throws {
-        app.get ("courses", ":code") { req -> Course in
-            guard let code = req.parameters.get("code", as: String.self) else {
+        app.get ("courses", ":code") { req -> [Course] in
+            guard let code = req.parameters.get("code", as: String.self),
+                  code.count <= 5 else {
                 throw Abort(.badRequest)
-            }
-            
-            guard let courseData = try await CourseData.query(on: req.db)
-                    .filter(\.$id == code)
-                    .first() else {
-                throw Abort(.notFound)
-            }
-
-            return Course(courseData)
+            }            
+            return try await CourseData.query(on: req.db).filter(\.$id == code).all().map{Course($0)} 
         }
     }
 
