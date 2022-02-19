@@ -33,4 +33,16 @@ func routes(_ app: Application) throws {
     try coursesController.getCategories(app)
 
     try coursesController.getSubcategories(app)
+
+    try coursesController.getExceptionsPeriods(app)
+
+    try coursesController.getExceptionsSubcategories(app)
+
+    try coursesController.getExceptionsLocation(app)
+
+    try coursesController.getExceptionsLevel(app)
+
+    try coursesController.getExceptionsSemesterLength(app)
+
+    try coursesController.getExceptionsCategories(app)
 }
