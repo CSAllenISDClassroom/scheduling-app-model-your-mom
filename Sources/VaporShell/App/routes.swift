@@ -22,7 +22,7 @@ import FluentMySQLDriver
 let coursesController = CoursesController()
 let categoriesController = CategoriesController()
 let subcategoriesController = SubcategoriesController()
-
+let exceptionsController = ExceptionsController()
 
 func routes(_ app: Application) throws {
     
@@ -37,4 +37,17 @@ func routes(_ app: Application) throws {
     try categoriesController.getCategories(app)
 
     try subcategoriesController.getSubcategories(app)
+
+    try exceptionsController.getExceptionsPeriods(app)
+
+    try exceptionsController.getExceptionsSubcategories(app)
+
+    try exceptionsController.getExceptionsLocation(app)
+
+    try exceptionsController.getExceptionsLevel(app)
+
+    try exceptionsController.getExceptionsSemesterLength(app)
+
+    try exceptionsController.getExceptionsCategories(app)
+
 }
