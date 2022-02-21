@@ -20,17 +20,21 @@ import Fluent
 import FluentMySQLDriver
 
 let coursesController = CoursesController()
+let categoriesController = CategoriesController()
+let subcategoriesController = SubcategoriesController()
+
+
 func routes(_ app: Application) throws {
     
     app.get { req in
-        return "poggers! daniel is hot <- uh"
+        return "It works!"
     }
 
     try coursesController.getCourseByCode(app)
 
     try coursesController.getPaginatedCourses(app)    
 
-    try coursesController.getCategories(app)
+    try categoriesController.getCategories(app)
 
-    try coursesController.getSubcategories(app)
+    try subcategoriesController.getSubcategories(app)
 }
